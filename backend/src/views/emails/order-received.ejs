@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>we-are-one</title>
+</head>
+
+<style>
+    html,body {
+        height: 100%;
+    }
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: sans-serif;
+    }
+     .cc-contact-info-table td {
+        border: solid 1px #f55564;
+        border-top-width: 0;
+        border-left-width: 0;
+    }
+    .cc-contact-info-table tr td:last-child {
+        border-right: none;
+    }
+    .cc-contact-info-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+</style>
+
+<body>
+    <table
+        style=" background-repeat: no-repeat;width: 100%; height: 100%; margin: 0 auto;background-size: cover;padding-bottom: 15px;">
+        <tr>
+            <td>
+        
+    <table style="width: 100%;">
+        <tr>
+            <td style="text-align: center">
+                <h1 style="color: #ff5564;font-size: 34px;margin-top: 27px;margin-bottom: 15px;">
+                    Hi Jennifer
+                </h1>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center">
+                <p style="margin: 0 0 20px; font-size: 22px; margin-bottom: 40px; line-height: 24px; color: #252525;">
+                    You have recieved one order.</p>
+            </td>
+        </tr>
+        <tr>
+            
+        </tr>
+    </table>
+
+    <table style="width: 100%;min-width: 100%; border-collapse: collapse;margin: 0 auto 30px auto;">
+        <tr>
+            <th style="color: #ff5564;font-weight: 600;text-align: center;padding-bottom: 10px;">
+                Order Details
+            </th>
+            <th style="color: #ff5564;font-weight: 600;text-align: center;padding-bottom: 10px;">
+                Billing Address
+            </th>
+            <th style="color: #ff5564;font-weight: 600;text-align: center;padding-bottom: 10px;">
+                Shipping Address
+            </th>
+        </tr>
+        <tr>
+            <td style="border: solid 1px #f55564;padding:10px;vertical-align: top;">
+                <p style="color: #252525;font-size: 16px;margin: 0 0 5px">
+                    <span style="display: inline-block; color: #ff5564;font-weight: 400;margin: 0 10px 0 0;">Order
+                        ID</span>
+                    <%= order.orderId %>
+                </p>
+                <p style="color: #252525;font-size: 16px;margin: 0 0 5px">
+                    <span style="display: inline-block; color: #ff5564;font-weight: 400;margin: 0 10px 0 0;">Order
+                        Date</span>
+                    <%= dayjs(order.createdAt).format('MMMM, DD, YYYY') %>
+                </p>
+                <p style="color: #252525;font-size: 16px;margin: 0 0 5px">
+                    <span style="display: inline-block; color: #ff5564;font-weight: 400;margin: 0 10px 0 0;">Payment
+                        Method</span>
+                   Paypal
+                </p>
+            </td>
+            <td style="border: solid 1px #f55564;padding:10px;vertical-align: top;">
+                <p style="color: #252525;font-size: 16px;margin: 0 0 5px">
+                    <%= order.billing_firstname %>
+                    <%= order.billing_lastname %> <br />
+                    <%= order.billing_addressLine1 %><br />
+                    <%= order.billing_addressLine2 %><br />
+                    <%= order.billing_state %>, <%= order.billing_country %> - <%= order.billing_zip %>
+                </p>
+                <p style="color: #252525;font-size: 16px;margin: 0 0 5px">
+                    <span
+                        style="display: inline-block; color: #ff5564;font-weight: 400;margin: 0 10px 0 0;">Email</span>
+                    <%= order.billing_email %>
+                </p>
+                <p style="color: #252525;font-size: 16px;margin: 0 0 5px">
+                    <span
+                        style="display: inline-block; color: #ff5564;font-weight: 400;margin: 0 10px 0 0;">Mobile</span>
+                    <%= order.billing_telephone %>
+                </p>
+            </td>
+
+            <td style="border: solid 1px #f55564;padding:10px;vertical-align: top;">
+                <p style="color: #252525;font-size: 16px;margin: 0 0 5px">
+                    <%= order.shipping_firstname %>
+                    <%= order.shipping_lastname %> <br />
+                    <%= order.shipping_addressLine1 %><br />
+                    <%= order.shipping_addressLine2 %><br />
+                    <%= order.shipping_state %>, <%= order.shipping_country %> - <%= order.shipping_zip %>
+                </p>
+                <p style="color: #252525;font-size: 16px;margin: 0 0 5px">
+                    <span
+                        style="display: inline-block; color: #ff5564;font-weight: 400;margin: 0 10px 0 0;">Email</span>
+                    <%= order.shipping_email %>
+                </p>
+                <p style="color: #252525;font-size: 16px;margin: 0 0 5px">
+                    <span
+                        style="display: inline-block; color: #ff5564;font-weight: 400;margin: 0 10px 0 0;">Mobile</span>
+                    <%= order.shipping_telephone %>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+    <table style="width: 100%;min-width: 100%; border-collapse: collapse;margin: 0 auto 30px auto;">
+        <tr>
+            <th style="color: #ff5564;font-weight: 600;text-align: center;padding-bottom: 10px;">
+                Product
+            </th>
+            <th style="color: #ff5564;font-weight: 600;text-align: center;padding-bottom: 10px;">
+                Quantity
+            </th>
+            <th style="color: #ff5564;font-weight: 600;text-align: center;padding-bottom: 10px;">
+                Price
+            </th>
+        </tr>
+        <% order.ordered_items.forEach(function(item) { %>
+            <tr style="border: solid 1px #f55564;text-align: center;padding: 10px;font-size: 15px;">
+                <td style="border-right: solid 1px #f55564;">
+                    <%= item.product_name %> 
+                </td>
+                <td style="border-right: solid 1px #f55564;">
+                    <%= item.quantity %>
+                </td>
+                <td style="border-right: solid 1px #f55564;">
+                    $<%= parseFloat(item.product_price).toFixed(2) %>
+                </td>
+            </tr>
+            <% }) %>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td style="border: solid 1px #f55564;border-left: solid 1px #f55564;text-align: center;">
+                        <span style="display: inline-block; color: #ff5564;font-weight: 600">Subtotal</span>
+                    </td>
+                    <td style="border: solid 1px #f55564;border-left: solid 1px #f55564;text-align: center;">
+                        <p style="display: inline-block; color: #252525;font-size: 16px;margin: 0; padding: 10px;">
+                            $<%= parseFloat(order.sub_amount).toFixed(2) %>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td style="border: solid 1px #f55564;border-left: solid 1px #f55564;text-align: center;">
+                        <span style="display: inline-block; color: #ff5564;font-weight: 600">Shipping Amount</span>
+                    </td>
+                    <td style="border: solid 1px #f55564;border-left: solid 1px #f55564;text-align: center;">
+                        <p style="display: inline-block; color: #252525;font-size: 16px;margin: 0; padding: 10px;">
+                            $<%= parseFloat(order.shipping_cost).toFixed(2) %>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td style="border: solid 1px #f55564;border-left: solid 1px #f55564;text-align: center;">
+                        <span style="display: inline-block; color: #ff5564;font-weight: 600">Order Total</span>
+                    </td>
+                    <td style="border: solid 1px #f55564;border-left: solid 1px #f55564;text-align: center;">
+                        <p style="display: inline-block; color: #252525;font-size: 16px;margin: 0; padding: 10px;">
+                            $<%= parseFloat(order.total_amount).toFixed(2) %>
+                        </p>
+                    </td>
+                </tr>
+    </table>
+
+   

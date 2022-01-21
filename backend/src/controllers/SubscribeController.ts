@@ -7,42 +7,43 @@ import {
  const md5 = require("md5")
 
   
-  @Controller('/subscribe')
-  export default class SubscribeController {
-   
-  
+@Controller('/subscribe')
+export default class SubscribeController {
     @Post('/')
-    @OpenAPI({
-      description: 'signup for subscribers',
-    })
-    async signup(@Body() body: any, @Res() response: any) {  client.setConfig({
-      apiKey: "403a8f597225fe3bd5394f02dd2c4ea6-us20",
-      server: "us20",
-    });
-    const { email } = body
-    const tags: any = ["subscribe", "ok"];
+    @OpenAPI({ description: 'signup for subscribers', })
 
-    const subscriberHash = md5(email.toLowerCase());
-    const listId = '5001e653d7';
+    async signup(@Body() body: any, @Res() response: any) {
 
-    const result = await client.lists.setListMember(
-      listId,
-      subscriberHash,
-      {
-        email_address: email,
-        status_if_new: 'subscribed',
-      }
-    );
+      client.setConfig({
+        apiKey: process.env.MAILCHIMP_API_KEY,
+        server: process.env.MAILCHIMP_SERVER_NAME,
+      });
 
-    const existingTags = result.tags.map((tag: any) => tag.name);
-    const allUniqueTags = [...new Set([...existingTags, ...tags])];
-    const formattedTags = allUniqueTags.map((tag) => {
+      const { email } = body
+      const tags: any = ["subscribe", "ok"];
+
+      const subscriberHash = md5(email.toLowerCase());
+      const listId = process.env.MAILCHIMP_LIST_ID;
+
+      const result = await client.lists.setListMember(
+        listId,
+        subscriberHash,
+        {
+          email_address: email,
+          status_if_new: 'subscribed',
+        }
+      );
+
+      const existingTags = result.tags.map((tag: any) => tag.name);
+      const allUniqueTags = [...new Set([...existingTags, ...tags])];
+      const formattedTags = allUniqueTags.map((tag) => {
         return {
-          name: tag,
+          name: tag, 
           status: 'active',
         };
-    });
-    const updateSubscriberTags = await client.lists.updateListMemberTags(
+      });
+
+      const updateSubscriberTags = await client.lists.updateListMemberTags(
         listId,
         subscriberHash,
         {
@@ -51,6 +52,7 @@ import {
           },
         }
       );
-    return response.message = "Thanks for subscribing!"
-  
-  } }
+      console.log(response);
+      return response.message = "Thanks for subscribing!"      
+    } 
+}

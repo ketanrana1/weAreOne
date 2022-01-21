@@ -15,17 +15,14 @@ const FooterNew = () => {
             const response : any = await axios({
             method: 'post',    
             url: `${publicRuntimeConfig.backendBaseUrl}subscribe`,
-            data: data,
-            // headers: {
-            //     // 'Content-Type': 'multipart/form-data'
-            //     }            
+            data: data,           
             });
             if(response) {                
-                console.log("RESPONSE DATA", response.data)
                 setResponseState(response.data)
+                console.log("RESPONSE STATE", response)
             }
         } catch (error) {
-            console.log(error)  
+            console.log("ERROR WHILE SUBSCRIBING", error )  
         }
     }
 

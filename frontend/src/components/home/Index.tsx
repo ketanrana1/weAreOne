@@ -67,7 +67,7 @@ export default function Index() {
     
     return (
         <div>            
-            <NewBanner imgURL="/assets/images/JEN Rainbow Banner Light.png" bannerText="Timeless messages to inspire young ones." />
+            <NewBanner imgURL="/assets/images/new-banner-min.png" bannerText="Timeless messages to inspire young ones." />
             <RainbowText imgUrl="/assets/images/Rainbow strip.png" />
             <Books imgUrl="/assets/images/Web book Banner.png" heading="BOOKS" btnUrl="/books" btnText="Browse Now" />
             <ArtPrints imgUrl="/assets/images/Art Print Web Page Banner.png" heading="art prints" btnUrl="/artprints" btnText="Browse Now" />

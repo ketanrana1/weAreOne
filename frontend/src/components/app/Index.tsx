@@ -5,7 +5,7 @@ import TextWithVideo from './TextWithVideo'
 export default function Index() {
     return (
         <>
-           <Banner imgURL="/assets/images/AppBanner Website Large.png" />
+           <Banner imgURL="/assets/images/app-banner-min.png" />
            <TextWithVideo 
            topImg="/assets/images/AppRainbow strip(1).png" 
            head="Loreum Ipsum"

@@ -98,7 +98,7 @@ const Contact = () => {
 
     return (
         <div className="contact-page">
-            <ImageBanner imgURL="/assets/images/contact-us-banner.png" />
+            <ImageBanner imgURL="/assets/images/contact-us-banner-min-low.png" />
             <div className="container py-5">
                 <div className="row">
                     <div className="col-lg-2">

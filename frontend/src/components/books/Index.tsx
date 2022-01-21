@@ -5,7 +5,7 @@ import AllBooks from 'components/books/AllBooks'
 export default function Index() { 
     return (
         <>
-            <Banner imgURL="/assets/images/Shop banner.png" />        
+            <Banner imgURL="/assets/images/books-banner-min.png" />        
             <AllBooks
             topImg="/assets/images/NewRainbow strip.png"
             topHead="Loreum Ipsum"

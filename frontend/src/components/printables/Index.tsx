@@ -162,7 +162,7 @@ function Index() {
     return (
         <div>
             <Banner 
-            topImgURL="/assets/images/printables-banner.png"
+            topImgURL="/assets/images/printables-banner-low.png"
             btmImgURL="assets/images/coloring-bg.png"
             />
             <SectionTopCards 

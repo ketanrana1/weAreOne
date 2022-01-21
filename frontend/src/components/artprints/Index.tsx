@@ -21,11 +21,11 @@ export default function Index() {
     useEffect(() => {   
         API(); 
     },[]);
-    
+     
     return (
         <div className="art-prints-cont">
             <Banner 
-                imgUrl="/assets/images/Art Print Web Page Banner.png" 
+                imgUrl="/assets/images/artprints-banner-min.png" 
                 head={["Art to delite, nourish ", <br/>,  "and inspire us all!"]}
             />
             <div className="textbox-cont container">

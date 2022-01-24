@@ -11,7 +11,6 @@ import AppImage from './AppImage';
 import LayoutNew from 'components/common/LayoutNew';
 
 
-
 export default function Index() {
 
 
@@ -67,24 +66,24 @@ export default function Index() {
     
     return (
         <div>            
-            <NewBanner imgURL="/assets/images/new-banner-min.png" bannerText="Timeless messages to inspire young ones." />
-            <RainbowText imgUrl="/assets/images/Rainbow strip.png" />
-            <Books imgUrl="/assets/images/Web book Banner.png" heading="BOOKS" btnUrl="/books" btnText="Browse Now" />
-            <ArtPrints imgUrl="/assets/images/Art Print Web Page Banner.png" heading="art prints" btnUrl="/artprints" btnText="Browse Now" />
+            <NewBanner imgURL="/assets/images/JEN Rainbow Banner Light-min.png" bannerText="Timeless messages to inspire young ones." />
+            <RainbowText imgUrl="/assets/images/Rainbow strip-min.png" />
+            <Books imgUrl="/assets/images/Web book Banner-min.png" heading="BOOKS" btnUrl="/books" btnText="Browse Now" />
+            <ArtPrints imgUrl="/assets/images/Art Print Web Page Banner-min.png" heading="art prints" btnUrl="/artprints" btnText="Browse Now" />
             <ChildBooks
             topHead="Favorites for every childs bookshelf!"
             btmHead="BUY YOURS HERE"
             />
             <VideoSec videoUrl="/assets/videos/video.mp4" />
-            <AppImage imgLink="/application" imgUrl="/assets/images/App Banner Webiste.png" />
+            <AppImage imgLink="/application" imgUrl="/assets/images/App Banner Webiste-min.png" />
             <FreeColor 
-            imgURL="/assets/images/coloring-spread-bg-2.png" 
+            imgURL="/assets/images/coloring-spread-bg-2-min.png" 
             btnImgURL="/assets/images/Colouring Icon copy.png"
             btnURL="printables"
             />
             <Follow 
             title="Join us at"
-            imgURL="/assets/images/join-us-bg.png"
+            imgURL="/assets/images/join-us-bg-min.png"
             socialData={followData}
             />
         </div>

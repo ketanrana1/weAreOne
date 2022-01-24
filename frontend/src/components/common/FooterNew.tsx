@@ -30,14 +30,14 @@ const FooterNew = () => {
   return (
     <>
     <div className="child-image-cont">
-        <img src="/assets/images/line of children new.png" />
+        <img src="/assets/images/line of children new-min.png" />
     </div>
     <footer className="mainFooter footer-new" >
         <div className="footer-container">
             <div className="row">
                 <div className="col-md-12">
                     <div className="footer-bckdr-sec">
-                        <img src="/assets/images/sign box(2).png" alt="" className="ft-sign-up-bg" />
+                        <img src="/assets/images/sign box(2)-min.png" alt="" className="ft-sign-up-bg" />
                         <div className="wao-ft-form_wrapper">
                             <div className="selectmain">
                                 <label>Email Address</label>

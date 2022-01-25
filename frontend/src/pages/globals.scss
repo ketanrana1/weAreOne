@@ -1111,3 +1111,7 @@ margin: 0 auto;
         top: -8px;
     }
 }
+
+body, html {
+    scroll-behavior: auto !important;
+}

@@ -101,36 +101,35 @@ const FooterNew = () => {
                         <li>
                         <Link href="/wholesale-and-distribution" >
                             <a>Wholesale & Distribution </a>
-                            </Link>
+                        </Link>
                         </li>
                         <li>
 
                         <Link href="/help-and-support" >
                             <a>Help & Support </a>
-                            </Link>
+                        </Link>
                         </li>
                         <li>
 
                         <Link href="/privacy-policy" >
                             <a>Privacy Policy </a>
-                            </Link>
+                        </Link>
                         </li>
                         <li>
 
                         <Link href="/terms-and-conditions" >
                             <a>Terms & Conditions </a>
-                            </Link>
+                        </Link>
                         </li>
                         <li>
 
                         <Link href="/shipping" >
                             <a>Shipping </a>
-                            </Link>
+                        </Link>
                         </li>                           
                     </ul>
                 </div>              
             </div>
-
             <div className="row">
                 <div className="col-md-12 text-center">
                     <p className="wao-ft-copy-right-text">Copyright © The World of We Are One.  All Rights Reserved.</p>

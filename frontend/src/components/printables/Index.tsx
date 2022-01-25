@@ -158,12 +158,11 @@ function Index() {
         }
     ]
 
-
     return (
         <div>
             <Banner 
             topImgURL="/assets/images/printables-banner-low.png"
-            btmImgURL="assets/images/coloring-bg.png"
+            btmImgURL="assets/images/coloring-bg-min.png"
             />
             <SectionTopCards 
             loopData={topCardsData}
@@ -178,7 +177,7 @@ function Index() {
             loppData={secFourCards}
             />
             <SectionFiveCards
-            loopData={secFiveCards} 
+            loopData={secFiveCards}
             />
         </div>
     )

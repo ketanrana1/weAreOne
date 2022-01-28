@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 const SALT_WORK_FACTOR = 10;
 const bcrypt = require('bcryptjs');
 const Joi = require('joi');
-const {v4 : uuidv4} = require('uuid')
+const {v4 : uuidv4} = require('uuid');
 
 
 const userSchema = new Schema({

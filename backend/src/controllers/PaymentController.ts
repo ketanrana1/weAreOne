@@ -27,7 +27,7 @@ export default class PaymentController {
          
           const payment: any = await paypal.captureOrder(token);
          
-          if (payment.statusCode === 201) {
+          if (payment.statusCode === 201) { 
 
             order.status = "Completed";
             transaction.status = "Received";
@@ -37,7 +37,7 @@ export default class PaymentController {
             const emailContent = await getTemplate('emails/order-received.ejs', { order, transaction});
             
             sendEmail({
-              to: "testmail8196@gmail.com",
+              to: `${process.env.ADMIN_EMAIL}`,
               cc: 'ketan.rana@geeky.dev',
               subject: `Order ${order.orderId} Receipt from worldofweareone.com`,
               html: emailContent,
@@ -52,7 +52,6 @@ export default class PaymentController {
             });
             response.redirect(`${process.env.FRONTEND_BASE_URL}success`);
             return response;
-
           }       
       }
   } 
@@ -69,8 +68,7 @@ export default class PaymentController {
       await users.findOneAndUpdate({ "userId": userId }, { 
         is_paid: "true"     
         });
-        response.redirect(`http://e4a2-103-72-143-20.ngrok.io/successMobile`); 
-      // response.redirect(`${process.env.FRONTEND_BASE_URL}successMobile`);           
+      response.redirect(`${process.env.FRONTEND_BASE_URL}successMobile`);           
       return response;
     }
 
@@ -94,7 +92,6 @@ export default class PaymentController {
         success: false,
         message: 'Invalid Request',
       };
-
   }
 
 

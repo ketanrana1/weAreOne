@@ -22,11 +22,10 @@ export class PayController {
         }
       ]
     });
-
-      let response = await client.execute(request);
-      return {
-        orderDetails : response
-      }  
+    let response = await client.execute(request);
+    return {
+      orderDetails : response
+    }  
   }
 } 
 

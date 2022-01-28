@@ -7,7 +7,6 @@ class PayPalService {
   private client: any;
 
   constructor() {
-
     const clientId = process.env.PAYPAL_CLIENT_ID;
     const clientSecret = process.env.PAYPAL_CLIENT_SECRET;
     const environment = process.env.PAYPAL_ENV === 'prod' ? new paypal.core.LiveEnvironment(clientId, clientSecret) : new paypal.core.SandboxEnvironment(clientId, clientSecret);

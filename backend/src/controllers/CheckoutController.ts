@@ -59,6 +59,7 @@ export class CheckoutController {
       };
     }
    await users.findOneAndUpdate({ "userId": body.userID }, { 
+      telephone: body.shipping_telephone,
       address_1: body.shipping_address_1,
       address_2: body.shipping_address_2,
       city: body.shipping_city,      

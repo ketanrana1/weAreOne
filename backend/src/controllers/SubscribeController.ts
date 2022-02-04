@@ -52,7 +52,6 @@ export default class SubscribeController {
           },
         }
       );
-      console.log(response);
       return response.message = "Thanks for subscribing!"      
     } 
 }

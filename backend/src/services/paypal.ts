@@ -14,7 +14,6 @@ class PayPalService {
   }
   
   async createPayment(order:any,  return_url: string, cancel_url: string) {
-  // console.log(order)
     const request = new paypal.orders.OrdersCreateRequest();
     request.requestBody({
       intent: 'CAPTURE',
@@ -67,7 +66,6 @@ class PayPalService {
       category: 'PHYSICAL_GOODS',
     }));
   }
-
 }
 
 export default new PayPalService();

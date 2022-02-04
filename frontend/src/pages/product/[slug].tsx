@@ -77,6 +77,9 @@ const Product = ({ product, relatedProducts  }) => {
                 </div>
                 <div id="tab-description" className="tab-content py-5">
                 <div dangerouslySetInnerHTML={{__html: product[0]?.book_description}}></div>
+                </div>
+                <div className="back-to-sale-cont">
+                  <a className="button-common-new" href="/books">Back to All Books Page</a>
                 </div>     
             </div>
         </div>

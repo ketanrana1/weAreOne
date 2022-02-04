@@ -18,7 +18,7 @@ export default function Index() {
         setrespone(data.response)
     }
 
-    useEffect(() => {   
+    useEffect(() => {    
         API(); 
     },[]);
      

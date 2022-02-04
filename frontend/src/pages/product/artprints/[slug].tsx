@@ -103,6 +103,10 @@ const Product = ({ product, relatedProducts  }) => {
     {<div dangerouslySetInnerHTML={{__html: product[0]?.art_description}}></div>}
 </div>
 
+<div className="back-to-sale-cont">
+  <a className="button-common-new" href="/artprints">Back to All Art Prints Page</a>
+</div>
+
 </div>
                 </div>
             </div>     

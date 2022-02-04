@@ -9,7 +9,7 @@ export default function ModalImage(props) {
         setModalState('none')
     }
    
-    return (
+    return ( 
         <>  
             <div className="modal fade" style={{display: modalState}} id="artPrintsModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">

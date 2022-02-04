@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Banner from './Banner'
 import SectionTopCards from './SectionTopCards'
 import SectionTwoCards from './SectionTwoCards'
@@ -6,7 +6,7 @@ import SectionThreeCards from './SectionThreeCards'
 import SectionFourCards from './SectionFourCards'
 import SectionFiveCards from './SectionFiveCards';
 
-function Index() {
+function Index(props) {
 
     const topCardsData = [
         {
@@ -158,6 +158,12 @@ function Index() {
         }
     ]
 
+    const [modalState, setModalState] = useState('')
+
+    function handleImageClick() {
+        setModalState('none')
+    }
+
     return (
         <div>
             <Banner 
@@ -179,6 +185,7 @@ function Index() {
             <SectionFiveCards
             loopData={secFiveCards}
             />
+           
         </div>
     )
 }

@@ -15,9 +15,8 @@ export default function AllBooks(props) {
 
     async function handleDeleteClick(id: any) {
 
-        try { 
-
-
+        try {
+            
             // const response = await axios.post(`${publicRuntimeConfig.backendBaseUrl}api/books/delete/${id}`);
             // setResponseState(response); 
             // return router.push(router.asPath) 

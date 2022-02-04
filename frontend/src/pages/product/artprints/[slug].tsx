@@ -12,7 +12,7 @@ const Product = ({ product, relatedProducts  }) => {
 
 
   if (product.length < 1) {
-    Router.push('/shop');
+    Router.push('/artprints');
   }
 
 

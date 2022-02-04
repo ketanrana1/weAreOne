@@ -10,7 +10,7 @@ import { addToCart, incrementQuantity, removeFromCart } from 'redux/cart.slice'
 const Product = ({ product, relatedProducts  }) => {
 
   if (product.length < 1) {
-    Router.push('/shop');
+    Router.push('/books');
   }
 
   const [counter, setCounter] = useState(1) 

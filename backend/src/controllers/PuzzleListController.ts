@@ -1252,7 +1252,8 @@ export class PuzzleListController {
              }, 
              'puzzle_parts': '$puzzle_parts', 
              '_id': 0, 
-             'puzzle_uuid': 1
+             'puzzle_uuid': 1,
+             'puzzle_image': 1
            }
          }, {
            '$match': {
@@ -1261,7 +1262,8 @@ export class PuzzleListController {
          }, {
            '$project': {
              'type': '$puzzle_type.type', 
-             'puzzle_uuid': 1, 
+             'puzzle_uuid': 1,
+             'puzzle_image': 1,
              'puzzle_parts': {
                '$last': '$puzzle_parts'
              }
@@ -1289,6 +1291,7 @@ export class PuzzleListController {
        const actualResponse = {
              "type": response[0].type,
              "puzzle_uuid":   response[0].puzzle_uuid,
+             "puzzle_image": `${process.env.IMAGES_BASE_PATH}${response[0].puzzle_image}`,
              "puzzle_parts": updatedImages.sort(() => Math.random() - 0.5 ) 
 
        }

@@ -9,6 +9,7 @@ import ChildBooks from './ChildBooks';
 import VideoSec from './VideoSec';
 import AppImage from './AppImage';
 import LayoutNew from 'components/common/LayoutNew';
+import Slider from './Slider';
 
 
 export default function Index() {
@@ -65,8 +66,9 @@ export default function Index() {
     ]
     
     return (
-        <div>            
-            <NewBanner imgURL="/assets/images/JEN Rainbow Banner Light-min.png" bannerText="Timeless messages to inspire young ones." />
+        <div>
+            <Slider />         
+            {/* <NewBanner imgURL="/assets/images/JEN Rainbow Banner Light-min.png" bannerText="Timeless messages to inspire young ones." /> */}
             <RainbowText imgUrl="/assets/images/Rainbow strip-min.png" />
             <Books imgUrl="/assets/images/Web book Banner-min.png" heading="BOOKS" btnUrl="/books" btnText="Browse Now" />
             <ArtPrints imgUrl="/assets/images/Art Print Web Page Banner-min.png" heading="art prints" btnUrl="/artprints" btnText="Browse Now" />

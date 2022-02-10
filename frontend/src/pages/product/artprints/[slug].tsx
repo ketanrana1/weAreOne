@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import axios from 'axios';
-import { addToCart, incrementQuantity, removeFromCart, updatePrice } from 'redux/cart.slice'
+import { addToCart, incrementQuantity, removeFromCart } from 'redux/cart.slice'
 
   
 

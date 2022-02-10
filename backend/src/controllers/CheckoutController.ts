@@ -1,20 +1,23 @@
-import { JsonController, UploadedFile, Body, Req, Post, Res, UseBefore } from 'routing-controllers';
+import { JsonController, UploadedFile, Body, Req, Post, Res, UseBefore, QueryParam } from 'routing-controllers';
 import Joi from 'joi'
 import Order from '../models/order';
 import PayPal from 'services/paypal';
 import Transaction from 'models/transaction';
 import AuthMiddleware from 'middlewares/AuthMiddleware';
 import users from 'models/users';
+import { join } from 'path';
 const {v4 : uuidv4} = require('uuid')
+
+
 
 
 @JsonController('/api') 
 
 export class CheckoutController {  
-
+ 
 @Post('/checkout')
 @UseBefore(AuthMiddleware)
-  async doCheckout(@Body() body: any, @Req() request: any, @Res() response: any,  @UploadedFile("", { }) file: any) {
+  async doCheckout(@QueryParam('currencyCode') currencyCodee: string, @QueryParam('convertedPrice') convertedPrice: string, @Body() body: any, @Req() request: any, @Res() response: any,  @UploadedFile("", { }) file: any) {
     const orderSchema = Joi.object({ 
       userID: Joi.any(),
       shipping_firstname: Joi.string().required().label('First Name'),
@@ -44,8 +47,11 @@ export class CheckoutController {
         product_name: Joi.string().min(0).allow(null).allow('').label('Variant'),
         product_price: Joi.number().min(0).allow(null).allow('').label('Order Repeat'),
         product_image_name: Joi.string().min(0).allow(null).allow('').label('Order Repeat Value'),
+        usdPrice: Joi.any()
       
       })),
+      currencyCode: Joi.any(),
+      convertedPrice: Joi.any()
 
     });
   
@@ -65,25 +71,31 @@ export class CheckoutController {
       city: body.shipping_city,      
       state: body.shipping_state,  
       zip: body.shipping_zip,
-      country: body.shipping_country,
+      country: body.shipping_country, 
       });
     
     const newOrder = new Order(body);
     const transaction = new Transaction();
     newOrder.ordered_items = body.items;
     newOrder.userId = body.userID;
-    let shippingCost = 20;
+    let shippingCost: any = (+convertedPrice * 20).toFixed(2);
+    // console.log("SHIPPING", shippingCost)
     let totalAmount = 0; 
     for (let i =0 ; i < newOrder.ordered_items.length ; i ++) {
-      totalAmount = totalAmount + newOrder.ordered_items[i].product_price * newOrder.ordered_items[i].quantity;
+
+      
+      totalAmount = (totalAmount + (( newOrder.ordered_items[i].usdPrice * +convertedPrice ) * newOrder.ordered_items[i].quantity));
+      // console.log("UPPER TOTAL AMOUNT", totalAmount)
       if(newOrder.ordered_items[i].id == "ad2f14df-5c92-4c66-8fd2-1fad1ca6c28f") {
         shippingCost = 0;
       }
     }
       
     newOrder.status = 'Created';
-    newOrder.total_amount = totalAmount + shippingCost;
+    newOrder.total_amount = +totalAmount + +shippingCost;
     newOrder.shipping_cost = shippingCost;
+    // console.log("SHiiping cost", shippingCost)
+    // console.log("total amount", newOrder.total_amount)
     newOrder.sub_amount = totalAmount;
     transaction.status = "Redirecting to Gateway";
     await transaction.save();
@@ -93,7 +105,8 @@ export class CheckoutController {
     let approvalUrl = "";
     const returnUrl = `${url}/payment/paypal/success?orderId=${result.orderId}&transactionId=${transaction.transactionId}`;
     const cancelUrl = `${url}/payment/paypal/cancel?orderId=${result.orderId}&transactionId=${transaction.transactionId}`;
-    const payment = await PayPal.createPayment( newOrder, returnUrl, cancelUrl);
+    const currencyCode: any = currencyCodee;
+    const payment = await PayPal.createPayment( newOrder, returnUrl, cancelUrl, currencyCode);
     if (payment.statusCode === 201) {
       payment.result.links.forEach((link: any) => {
         if (link.rel === 'approve') {
@@ -127,9 +140,10 @@ export class CheckoutController {
     const cancelUrl = `${url}/payment/paypal/cancel/mobile?userId=${body.userId}&orderId=${uuidv4()}&transactionId=${uuidv4()}`;
 
     const newOrder = {total_amount : 20, sub_amount: 20, shipping_cost: 0 };
+    const currencyCode = 'USD'
 
 
-    const payment = await PayPal.createPayment( newOrder, returnUrl, cancelUrl);
+    const payment = await PayPal.createPayment( newOrder, returnUrl, cancelUrl, currencyCode);
 
     if (payment.statusCode === 201 ) {
 
@@ -157,6 +171,4 @@ export class CheckoutController {
       message: "ERROR"
     }
   }
-
-
 }

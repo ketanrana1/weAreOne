@@ -13,7 +13,7 @@ class PayPalService {
     this.client = new paypal.core.PayPalHttpClient(environment);
   }
   
-  async createPayment(order:any,  return_url: string, cancel_url: string) {
+  async createPayment(order:any,  return_url: string, cancel_url: string, currencyCode: string) {
     const request = new paypal.orders.OrdersCreateRequest();
     request.requestBody({
       intent: 'CAPTURE',
@@ -24,19 +24,19 @@ class PayPalService {
       purchase_units: [
         {
           amount: {
-            currency_code: 'USD',
+            currency_code: currencyCode,
             value: order.total_amount,
             breakdown: {
               item_total: {
-                currency_code: 'USD',
+                currency_code: currencyCode,
                 value: order.sub_amount,
               },
               shipping: {
-                currency_code: 'USD',
+                currency_code: currencyCode,
                 value: order.shipping_cost,
               },
               discount: {
-                currency_code: 'USD',
+                currency_code: currencyCode,
                 value: '0',
               }
               ,
@@ -54,12 +54,12 @@ class PayPalService {
     return this.client.execute(request);
   }
 
-  async filterOrderItems(items: any) {
+  async filterOrderItems(items: any, currencyCode: any) {
     return items.map((item: any) => ({
       name: item.product.title,
       sku: item.product.sku,
       unit_amount: {
-        currency_code: 'USD',
+        currency_code: currencyCode,
         value: item.price,
       },
       quantity: item.quantity,

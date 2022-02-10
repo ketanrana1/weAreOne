@@ -24,14 +24,14 @@ export default function HelpAndSupport() {
         <h1>Help and Support</h1>
         <div className="">
         {
-                    response?.map( (data:any, index) => {                       
-                            return (
-                                <div className="">
-                                    {data.content}
-                                </div>
-                            );
-                        })
-                    }
+            response?.map( (data:any, index) => {                       
+                    return (
+                        <div className="">
+                            {data.content}
+                        </div>
+                    );
+                })
+        }
         </div>
         </div>
         

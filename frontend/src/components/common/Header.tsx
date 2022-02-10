@@ -1,11 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link';
 import headerStyles from '../styles/header.module.css';
 import { useRouter } from "next/router";
+import { current } from '@reduxjs/toolkit';
+import axios from 'axios';
+import getConfig from 'next/config'
+const { publicRuntimeConfig } = getConfig()
+// import { updatePrice } from 'redux/cart.slice'
+import cart from 'pages/cart';
+
 
 const Header = (props) => { 
-
+    const dispatch = useDispatch();
 
     const router = useRouter();
     const [check, setCheck] = useState(false);
@@ -13,12 +20,82 @@ const Header = (props) => {
     function handleRadioChange() {
         setCheck(true);
     }
-    const cart = useSelector((state: any) => state.cart);
+
 
     const [navCollapsed, setNavCollapsed] = useState(true);
 
     const handleNavCollapse = () => setNavCollapsed(false);
     const handleNavCollapseTwo = () => setNavCollapsed(true);
+    
+
+
+    async function loadOnInitialPageLoad() {
+        if (typeof window !== "undefined") {
+
+            let currencyName = sessionStorage.getItem("Currency");
+            console.log("KETAN", currencyName);
+            if (currencyName === null) {
+    
+                if (typeof window !== "undefined") {
+                    sessionStorage.setItem("convertedPrice", "1") 
+                    sessionStorage.setItem("Currency", "USD");  
+                    sessionStorage.setItem("currencySymbol", "$")
+                }
+    
+            }
+    
+        }
+    }
+   
+    loadOnInitialPageLoad();
+
+    const handleCurrencyChange = async(e) => {
+
+        try {
+            const request : any = await axios({
+            method: 'get',    
+            url: `${publicRuntimeConfig.backendBaseUrl}api/convertCurrency?currencyCode=${e.target.value}`,
+            });
+            if (typeof window !== "undefined") {
+                sessionStorage.setItem("convertedPrice", request.data) 
+                sessionStorage.setItem("Currency", e.target.value);
+                if (e.target.value === "USD") {
+                    sessionStorage.setItem("currencySymbol", "$")
+                } else if (e.target.value === "AUD") {
+                    sessionStorage.setItem("currencySymbol", "A$")
+                }
+            }
+            router.reload();                       
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+        // if (typeof window !== "undefined") {
+
+        //     const newCart: any = useSelector((state: any) => state.cart);
+        //     console.log("newCart", newCart)
+        //     const cartData:any = [];
+        //     const convertedPrice = sessionStorage.getItem("convertedPrice")
+        //     const Currency = sessionStorage.getItem("Currency")
+        //     const currencySymbol = sessionStorage.getItem("currencySymbol")
+        //     Object.values(newCart).map((item:any) => 
+        //     cartData.push({
+        //             ...item,
+        //             product_price: 1000,
+        //             currency: Currency,
+        //             currencySymbol: currencySymbol
+        //         })
+        //     )
+        //     console.log("CART VALUE", cartData);
+        //     dispatch(updatePrice(cartData));
+        // }
+    
+
+    
+
+
     
 
   return (
@@ -104,6 +181,14 @@ const Header = (props) => {
                                 </a>
                             </Link>
                         </li>
+
+                        <select id="currency-switcher" onChange={handleCurrencyChange}>
+                            <option value="USD">USD</option>
+                            <option value="AUD">AUD</option>
+                        </select>
+
+
+
                    </div>
                 </ul>              
             </div>

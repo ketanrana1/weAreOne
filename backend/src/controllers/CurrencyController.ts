@@ -1,10 +1,13 @@
-import { JsonController, UploadedFile, Body, Get, Post, UseBefore } from 'routing-controllers';
+import { JsonController, UploadedFile, Body, Get, Post, UseBefore, QueryParam } from 'routing-controllers';
 import Content from '../models/content';
 import Joi from 'joi';
 import AdminAuthMiddleware from 'middlewares/AdminAuthMiddleware';
 import convertCurrency from 'services/currencyconverter';
 let CurrencyConverter = require('@y2nk4/currency-converter')
 let converter = new CurrencyConverter('7be7ff38a13ccc19088c')
+
+const CC = require('currency-converter-lt')
+
 
 @JsonController('/api') 
 export class CurrencyController {
@@ -41,27 +44,19 @@ export class CurrencyController {
      }
   }
 
+
+  
   @Get('/convertCurrency')
 
-  async getContent(@Body() body: any) {
+  async getContent(@Body() body: any, @QueryParam('currencyCode') currencyCode: string,) {
  
+    let currencyConverter = new CC({from:"USD", to:currencyCode, amount:1})
 
-    converter.convert('USD', 'CNY', 100)
-    .then(console.log, console.error)
-
-    // convertCurrency(10, 'USD', 'PHP', function(err: any, amount: any) {
-    //   const response = amount ;
-    //   return {
-    //     response,
-    //     message: 'This action returns site content details'
-    //   };
-
-    // });
-
-    // return {
-    //   "message" : "Test"
-    // }
-    
+    return currencyConverter.convert().then((response: any) => {
+      console.log(response);
+      return response
+    })
+   
   }
 }
 

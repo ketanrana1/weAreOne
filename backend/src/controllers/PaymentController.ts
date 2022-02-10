@@ -29,7 +29,7 @@ export default class PaymentController {
          
           if (payment.statusCode === 201) { 
 
-            order.status = "Completed";
+            order.status = "Completed"; 
             transaction.status = "Received";
             transaction.info = payment
             await order.save();

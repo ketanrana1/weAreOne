@@ -63,7 +63,7 @@ export class PuzzleListController {
       return {
         success: false,
         message: 'Request data is invalid',
-        error: validate.error.details.map((d) => d.message),  
+        error: validate.error.details.map((d: any) => d.message),  
       };
     }
 
@@ -102,7 +102,7 @@ export class PuzzleListController {
       return {
         success: false,
         message: 'Request data is invalid',
-        error: validate.error.details.map((d) => d.message),  
+        error: validate.error.details.map((d: any) => d.message),  
       };
     }
 
@@ -1331,7 +1331,7 @@ export class PuzzleListController {
       return {
         success: false,
         message: 'Request data is invalid',
-        error: validate.error.details.map((d) => d.message),
+        error: validate.error.details.map((d: any) => d.message),
       };
     }
 

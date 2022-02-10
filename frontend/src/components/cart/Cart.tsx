@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { cartReducer, removeFromCart } from 'redux/cart.slice';
 import userLogin from 'services/userLogin';
 import { useRouter } from 'next/router';
-import Link from 'next/link'
+import Link from 'next/link'    
 
 let amount = 0
 
@@ -19,19 +19,29 @@ const Cart = () => {
 
     const cart = useSelector((state: any) => state.cart);
 
+    // console.log(" test cart from header",cart)
+
+
+
+
     let products = "block"
     let noProducts = "none"
 
 
     if  ( cart.length === 0 ) {
         products = "none" 
-        noProducts = "block"    
+        noProducts = "block"     
     }
 
  
     if(!userLogin() && typeof window !== "undefined") router.push('/login')
 
     if ( router.pathname === "/cart") amount = 0
+
+    const currencySymbol = sessionStorage.getItem("currencySymbol");
+    const convertedPrice = +sessionStorage.getItem("convertedPrice");
+    const usdPrice = sessionStorage.getItem("usdPrice");
+    // const priceInConvertedCurrency: any = ( convertedPrice * product[0]?.book_price ).toFixed(2);
 
 return (
     <div className="cart-page">
@@ -51,7 +61,18 @@ return (
                         </thead>
                         <tbody>                
                             {cart.map((item, index) => {
-                                amount += item.product_price * item.quantity;
+                                let priceInConvertedCurrency
+                                if (item.currencySymbol === currencySymbol) {
+                                    priceInConvertedCurrency = item.product_price
+                                    amount += item.product_price * item.quantity
+                                } else if (convertedPrice === 1 && item.currencySymbol !== currencySymbol ) {
+                                    priceInConvertedCurrency = item.product_price - ( item.product_price - parseInt(usdPrice))
+                                    amount += priceInConvertedCurrency * item.quantity
+                                } else {
+                                     priceInConvertedCurrency = Math.round(convertedPrice * item.product_price);
+                                    amount += priceInConvertedCurrency * item.quantity;
+                                }
+                                
                                 return (
                                 <tr>
                                 <td className="image-product-cart">
@@ -68,11 +89,9 @@ return (
                                     <a >
                                         <img onClick={() =>  {dispatch(removeFromCart(item.id))}} src="/assets/images/remove.png" alt="Remove" title="Remove" />
                                     </a>
-                                    </Link>
-
-                                    
+                                    </Link>                                   
                                 </td>
-                                <td className="price">${item.product_price}</td>
+                                <td className="price">{currencySymbol}{ priceInConvertedCurrency}</td>
                                 </tr>                          
                                 );
                             })}                           
@@ -86,7 +105,7 @@ return (
                     <tbody>
                         <tr>
                             <td className="right" style={{fontSize: "20px"}} ><b>Total:</b></td>
-                            <td className="right" style={{fontSize: "20px"}}>${amount}</td>
+                            <td className="right" style={{fontSize: "20px"}}>{currencySymbol}{amount}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -95,17 +114,13 @@ return (
                 <div className="right">
                     <Link href="/checkout">
                         <a className="button">Checkout</a>
-                    </Link>
-                                 
-                    </div>
+                    </Link>               
+                </div>
                 <div className="center">
                     <Link href="/books">
                         <a className="button">Continue Shopping</a>
-                    </Link>
-                    
-                   
-                    
-                    </div>
+                    </Link> 
+                </div>
             </div>
             </div>
 

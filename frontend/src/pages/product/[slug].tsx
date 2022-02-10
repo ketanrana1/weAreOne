@@ -1,7 +1,7 @@
 import react, {useState} from 'react'
 import Router from 'next/router';
 import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux' 
 import axios from 'axios';
 import LayoutNew from 'components/common/LayoutNew'
 import { addToCart, incrementQuantity, removeFromCart } from 'redux/cart.slice'
@@ -23,25 +23,42 @@ const Product = ({ product, relatedProducts  }) => {
     }   
   }
 
+    
+
     const dispatch = useDispatch();
 
     const router = useRouter()
 
     const [quantityState, setQuantityState] = useState(1)
+    
 
-    const item = {
+    sessionStorage.setItem("usdPrice", product[0]?.book_price);
+    const currency = sessionStorage.getItem("Currency")
+    const currencySymbol = sessionStorage.getItem("currencySymbol");
+    const convertedPrice = +sessionStorage.getItem("convertedPrice");
+    const priceInConvertedCurrency: any = Math.round( convertedPrice * product[0]?.book_price );
+
+    let usdPrice
+    if (typeof window !== "undefined") { 
+      usdPrice = sessionStorage.getItem("usdPrice")
+    }
+
+    const item = { 
       product_name: product[0]?.book_name,
       product_image_name: product[0]?.book_image_name,
-      product_price: product[0]?.book_price,
+      product_price: priceInConvertedCurrency, 
       id: product[0]?.bookId,
-      quantity: counter
+      quantity: counter,
+      currencySymbol: currencySymbol,
+      currency: currency,
+      usdPrice: usdPrice,
     }
 
     const handleAtc = () => {
         dispatch(addToCart(item));
         router.push('/cart')
     }
-
+  
 
   return (
     <>
@@ -57,7 +74,7 @@ const Product = ({ product, relatedProducts  }) => {
                         </div>
                     </div>
                     <div className="right col-12 col-md-6">
-                        <div className="price">Price: ${product[0]?.book_price}<br/>
+                        <div className="price">Price: {currencySymbol}{priceInConvertedCurrency}<br/>
                         </div>
                         <div className="cart">
                             <div className="cart-inner-cont">Qty:

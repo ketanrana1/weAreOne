@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import axios from 'axios';
-import { addToCart, incrementQuantity, removeFromCart } from 'redux/cart.slice'
+import { addToCart, incrementQuantity, removeFromCart, updatePrice } from 'redux/cart.slice'
 
   
 
@@ -31,13 +31,27 @@ const Product = ({ product, relatedProducts  }) => {
     const router = useRouter()
 
     const [quantityState, setQuantityState] = useState(1)
+    
+    sessionStorage.setItem("usdPrice", product[0]?.size_small_price);
+    const currency = sessionStorage.getItem("Currency")
+    const currencySymbol = sessionStorage.getItem("currencySymbol");
+    const convertedPrice = +sessionStorage.getItem("convertedPrice");
+    const priceInConvertedCurrency: any = Math.round( convertedPrice * product[0]?.size_small_price );
+    let usdPrice
+
+    if (typeof window !== "undefined") { 
+      usdPrice = sessionStorage.getItem("usdPrice");
+    }
 
     const item = {
       product_name:product[0]?.art_name,
       product_image_name: product[0]?.art_image_1_name,
-      product_price: product[0]?.size_small_price,
+      product_price: priceInConvertedCurrency,
       id: product[0]?.artId,
-      quantity: counter
+      quantity: counter,
+      currencySymbol: currencySymbol,
+      currency: currency,
+      usdPrice: usdPrice
     }
 
     const handleAtc = () => {
@@ -66,48 +80,43 @@ const Product = ({ product, relatedProducts  }) => {
                   </div>
                 </div>
                 <div className="col-12 col-md-5">
+                  <div className="product-info-cont">
+                    <h2 className="prouct-name">{product[0]?.art_name}</h2>
+                    <p className="product-by">by Jennifer Black</p>
+                    <p className="price">{currencySymbol} {priceInConvertedCurrency}</p>
+                    <form>
+                        <div className="size-selector">
+                            <p>Size:</p>
+                            <select>
+                                <option disabled>Select Size:</option>
+                                <option value="Small">Small - 73cm X 36cm</option>
+                            </select>
+                        </div>
+                        <div className="cart">
+                          <div className="cart-inner-cont">Qty:
+                              <div className="counter-cont-main">
+                                  <div className="counter-cont">
+                                      {counter}
+                                  </div>
+                                  <div className="counter-btn-div">
+                                      <div className="each-col top-incr" onClick={handleClickInc}>+</div>
+                                      <div className="each-col btm-dec" onClick={handleClickDec}>-</div>
+                                  </div>
+                              </div>
+                              <input onClick={handleAtc} type="button" value="Add to Cart" id="button-cart" className="button btn-artprnts" />
+                          </div>
+                      </div>
+                    </form>
+                    <div className="product-details-content-cont">
+                        <h4>Description:</h4>
+                        {<div dangerouslySetInnerHTML={{__html: product[0]?.art_description}}></div>}
+                    </div>
 
-                <div className="product-info-cont">
+                    <div className="back-to-sale-cont">
+                      <a className="button-common-new" href="/artprints">Back to All Art Prints Page</a>
+                    </div>
 
-<h2 className="prouct-name">{product[0]?.art_name}</h2>
-<p className="product-by">by Jennifer Black</p>
-<p className="price">${product[0]?.size_small_price}</p>
-<form>
-    <div className="size-selector">
-        <p>Size:</p>
-        <select>
-            <option disabled>Select Size:</option>
-            <option value="Small">Small - 73cm X 36cm</option>
-        </select>
-    </div>
-
-    <div className="cart">
-      <div className="cart-inner-cont">Qty:
-          <div className="counter-cont-main">
-              <div className="counter-cont">
-                  {counter}
-              </div>
-              <div className="counter-btn-div">
-                  <div className="each-col top-incr" onClick={handleClickInc}>+</div>
-                  <div className="each-col btm-dec" onClick={handleClickDec}>-</div>
-              </div>
-          </div>
-          <input onClick={handleAtc} type="button" value="Add to Cart" id="button-cart" className="button btn-artprnts" />
-      </div>
-  </div>
-
-
-</form>
-<div className="product-details-content-cont">
-    <h4>Description:</h4>
-    {<div dangerouslySetInnerHTML={{__html: product[0]?.art_description}}></div>}
-</div>
-
-<div className="back-to-sale-cont">
-  <a className="button-common-new" href="/artprints">Back to All Art Prints Page</a>
-</div>
-
-</div>
+                  </div>
                 </div>
             </div>     
         </div>

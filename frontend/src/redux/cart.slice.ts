@@ -1,5 +1,10 @@
 import {createSlice} from '@reduxjs/toolkit';
 
+
+// const currency = sessionStorage.getItem("Currency")
+// const currencySymbol = sessionStorage.getItem("currencySymbol");
+// const convertedPrice = +sessionStorage.getItem("convertedPrice");
+
 const cartSlice = createSlice({
     name: 'cart',
     initialState: [],
@@ -28,7 +33,7 @@ const cartSlice = createSlice({
                 state.splice(index, 1);
             } else {
                 item.quantity--;
-            }
+            } 
         },
         removeFromCart: (state, action) => {
             const index = state.findIndex((item) => item.id === action.payload);
@@ -37,6 +42,17 @@ const cartSlice = createSlice({
         resetCart: (state) => {
             state.splice(0, state.length);
         },
+        // updatePrice: (state, action) => {
+        //     // state = action.payload
+        //     // // console.log("PAYLOAD", state)
+        //     // console.log("STATE", state)
+
+
+        //     // state.push(action.payload);
+
+        //     // // return {...action.payload}
+      
+        // },
     },
 });
 

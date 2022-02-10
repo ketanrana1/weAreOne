@@ -46,7 +46,6 @@ $p-color: #1a3692;
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
     }
-
 }
 /*Section New Banner*/
 
@@ -69,7 +68,6 @@ $p-color: #1a3692;
             font-weight: bold;
         }
     }
-
 }
 /*Rainbow sec*/
 
@@ -102,10 +100,10 @@ $p-color: #1a3692;
         right:0;
         text-align:center;
         transition: all .3s ease-in;
-        margin-top:0px; 
+        margin-top: 0px; 
         a {
            visibility: hidden;
-            transition: all .3s ease-in;
+           transition: all .3s ease-in;
         }
     }
     h2 {
@@ -118,8 +116,7 @@ $p-color: #1a3692;
         font-family: "Arial Rounded MT Bold";
         margin-top:50px;
         margin-bottom: 40px;
-        width:100%;
-    
+        width:100%;  
     }
 
 }

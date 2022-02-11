@@ -39,6 +39,17 @@ const Product = ({ product, relatedProducts  }) => {
     const priceInConvertedCurrency: any = Math.round( convertedPrice * product[0]?.size_small_price );
     let usdPrice
 
+    let styleCurrency
+    if (currency === "AUD") {
+      styleCurrency = {
+        fontSize: "10px"
+      }
+    } else {
+      styleCurrency = {
+        display: "none"
+      }
+    }
+
     if (typeof window !== "undefined") { 
       usdPrice = sessionStorage.getItem("usdPrice");
     }
@@ -84,6 +95,7 @@ const Product = ({ product, relatedProducts  }) => {
                     <h2 className="prouct-name">{product[0]?.art_name}</h2>
                     <p className="product-by">by Jennifer Black</p>
                     <p className="price">{currencySymbol} {priceInConvertedCurrency}</p>
+                    <p style={styleCurrency}><i>Price in Australian dollars</i></p>
                     <form>
                         <div className="size-selector">
                             <p>Size:</p>

@@ -37,6 +37,17 @@ const Product = ({ product, relatedProducts  }) => {
     const currencySymbol = sessionStorage.getItem("currencySymbol");
     const convertedPrice = +sessionStorage.getItem("convertedPrice");
     const priceInConvertedCurrency: any = Math.round( convertedPrice * product[0]?.book_price );
+    
+    let styleCurrency
+    if (currency === "AUD") {
+      styleCurrency = {
+        fontSize: "10px"
+      }
+    } else {
+      styleCurrency = { 
+        display: "none"
+      }
+    }
 
     let usdPrice
     if (typeof window !== "undefined") { 
@@ -75,6 +86,7 @@ const Product = ({ product, relatedProducts  }) => {
                     </div>
                     <div className="right col-12 col-md-6">
                         <div className="price">Price: {currencySymbol}{priceInConvertedCurrency}<br/>
+                        <p style={styleCurrency}><i>Price in Australian dollars</i></p>
                         </div>
                         <div className="cart">
                             <div className="cart-inner-cont">Qty:

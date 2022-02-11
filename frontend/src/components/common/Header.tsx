@@ -28,12 +28,11 @@ const Header = (props) => {
     const handleNavCollapseTwo = () => setNavCollapsed(true);
     
 
-
+    let currencyName
     async function loadOnInitialPageLoad() {
         if (typeof window !== "undefined") {
 
-            let currencyName = sessionStorage.getItem("Currency");
-            console.log("KETAN", currencyName);
+            currencyName = sessionStorage.getItem("Currency");
             if (currencyName === null) {
     
                 if (typeof window !== "undefined") {
@@ -49,6 +48,8 @@ const Header = (props) => {
    
     loadOnInitialPageLoad();
 
+   
+
     const handleCurrencyChange = async(e) => {
 
         try {
@@ -63,41 +64,19 @@ const Header = (props) => {
                     sessionStorage.setItem("currencySymbol", "$")
                 } else if (e.target.value === "AUD") {
                     sessionStorage.setItem("currencySymbol", "A$")
-                }
-            }
-            router.reload();                       
+                }        
+                router.reload();
+            }                             
         } catch (error) {
             console.log(error)
         }
     }
 
-
-        // if (typeof window !== "undefined") {
-
-        //     const newCart: any = useSelector((state: any) => state.cart);
-        //     console.log("newCart", newCart)
-        //     const cartData:any = [];
-        //     const convertedPrice = sessionStorage.getItem("convertedPrice")
-        //     const Currency = sessionStorage.getItem("Currency")
-        //     const currencySymbol = sessionStorage.getItem("currencySymbol")
-        //     Object.values(newCart).map((item:any) => 
-        //     cartData.push({
-        //             ...item,
-        //             product_price: 1000,
-        //             currency: Currency,
-        //             currencySymbol: currencySymbol
-        //         })
-        //     )
-        //     console.log("CART VALUE", cartData);
-        //     dispatch(updatePrice(cartData));
-        // }
+    let reloadCurrency: any 
+    if (typeof window !== "undefined") reloadCurrency  = window.sessionStorage.getItem("Currency")
     
 
     
-
-
-    
-
   return (
     <header className="headerMain">
         <div className="topHeaderBar">
@@ -181,11 +160,24 @@ const Header = (props) => {
                                 </a>
                             </Link>
                         </li>
-
                         <select id="currency-switcher" onChange={handleCurrencyChange}>
+                            <option disabled selected >Currency</option>
                             <option value="USD">USD</option>
-                            <option value="AUD">AUD</option>
+                            <option value="AUD">AUD</option> 
                         </select>
+
+
+                            {/* { reloadCurrency === "USD" ? 
+                                <select id="currency-switcher" onChange={handleCurrencyChange}>
+                                    <option selected value="USD">USD</option>
+                                    <option value="AUD">AUD</option> 
+                                </select> :  
+                                <select id="currency-switcher" onChange={handleCurrencyChange}>
+                                    <option value="USD">USD</option>
+                                    <option selected value="AUD">AUD</option> 
+                                </select> 
+                            } */}
+                        
 
 
 

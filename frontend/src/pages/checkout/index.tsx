@@ -4,11 +4,15 @@ import Joi from "joi-browser";
 import axios from 'axios';   
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
+import userLogin from 'services/userLogin';
 
 import getConfig from 'next/config' 
 const { publicRuntimeConfig } = getConfig()
 
 const baseUrl = process.env.BACKEND_BASE_URL;
+
+
+
 
 
 const initialResponseState: any = [];
@@ -39,6 +43,10 @@ const schema = {
 };
 
 export default function Checkout(props) {
+
+    const router = useRouter()
+
+    if(!userLogin() && typeof window !== "undefined") router.push('/login')
 
     const id = sessionStorage.getItem("userId");
     const [response, setResponse] = useState([])
@@ -77,7 +85,6 @@ export default function Checkout(props) {
     const cart = useSelector((state: any) => state.cart);
     const [userid, setUserid] = useState("")
 
-    const router = useRouter();
     useEffect(() => {
         setUserid(sessionStorage.getItem("userId")); 
     }, [])

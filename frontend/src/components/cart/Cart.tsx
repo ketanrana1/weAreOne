@@ -15,7 +15,7 @@ const Cart = () => {
 
     function handleRadioChange() {
         setCheck(true);
-    }
+    } 
 
     const cart = useSelector((state: any) => state.cart);
 
@@ -34,7 +34,7 @@ const Cart = () => {
     }
 
  
-    if(!userLogin() && typeof window !== "undefined") router.push('/login')
+    // if(!userLogin() && typeof window !== "undefined") router.push('/login')
 
     if ( router.pathname === "/cart") amount = 0
 

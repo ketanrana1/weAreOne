@@ -223,6 +223,20 @@ const AdminLayout = ({children}) => {
                                 </nav>
                             </div>
 
+
+                            <a className="nav-link collpse-menu collapsed" href="#" aria-expanded="false" aria-haspopup="true" data-toggle="collapse" aria-controls="collapseLayouts" data-target="#collapseLayouts12">
+                                <div className="sb-nav-link-icon"><i className="fas fa-shipping-fast"></i></div>
+                                Content
+                                <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
+                            </a>
+                            <div className="collapse" id="collapseLayouts12" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav className="sb-sidenav-menu-nested nav">                                 
+                                    <Link href='/admin/currency/addCurrency'>
+                                        <a className='nav-link'>Add AUD Price</a>
+                                    </Link>                                
+                                </nav>
+                            </div>
+
                                 <nav className="sb-sidenav-menu-nested nav">                                 
                                     <Link href='/admin/logout'>
                                         <a className='nav-link'>Logout</a>

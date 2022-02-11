@@ -16,7 +16,8 @@ import { CheckoutController } from 'controllers/CheckoutController'
 import { ContactController } from 'controllers/ContactContoller'
 import { CurrencyController } from 'controllers/CurrencyController'
 import SubscribeController from 'controllers/SubscribeController'
-import PaymentController from "controllers/PaymentController"
+import PaymentController from 'controllers/PaymentController'
+import { AudController } from 'controllers/AudController'
 import './database/mongoose';
 import path from "path"
 import { json as jsonBodyParser, urlencoded as urlencodedBodyParser } from 'body-parser';
@@ -35,7 +36,7 @@ app.use(urlencodedBodyParser({ extended: true }));
 useExpressServer(app, 
   {
     cors: true,
-    controllers: [RegisterController, CardController, BookController, PuzzleListController, OrderController, ContentController, PayController, ArtprintsController, PagecontentController, CheckoutController, PaymentController, SubscribeController, ContactController, CurrencyController ],
+    controllers: [RegisterController, CardController, BookController, PuzzleListController, OrderController, ContentController, PayController, ArtprintsController, PagecontentController, CheckoutController, PaymentController, SubscribeController, ContactController, CurrencyController, AudController ],
   }
 )
 

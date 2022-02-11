@@ -72,6 +72,8 @@ export class BookController {
 
     let bookBody = body; 
     bookBody.book_image_name = file.filename;
+
+    console.log("Body", body)
   
     const newBook = new Book(bookBody);
     const result = await newBook.save();

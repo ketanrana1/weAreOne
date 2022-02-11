@@ -80,11 +80,11 @@ export class CheckoutController {
     newOrder.userId = body.userID;
     let shippingCost: any = (+convertedPrice * 20).toFixed(2);
     // console.log("SHIPPING", shippingCost)
-    let totalAmount = 0; 
+    let totalAmount: any = 0; 
     for (let i =0 ; i < newOrder.ordered_items.length ; i ++) {
 
       
-      totalAmount = (totalAmount + (( newOrder.ordered_items[i].usdPrice * +convertedPrice ) * newOrder.ordered_items[i].quantity));
+      totalAmount = (totalAmount + (( newOrder.ordered_items[i].usdPrice * +convertedPrice ) * newOrder.ordered_items[i].quantity)).toFixed(2);
       // console.log("UPPER TOTAL AMOUNT", totalAmount)
       if(newOrder.ordered_items[i].id == "ad2f14df-5c92-4c66-8fd2-1fad1ca6c28f") {
         shippingCost = 0;
@@ -92,11 +92,11 @@ export class CheckoutController {
     }
       
     newOrder.status = 'Created';
-    newOrder.total_amount = +totalAmount + +shippingCost;
-    newOrder.shipping_cost = shippingCost;
+    newOrder.total_amount = (+totalAmount + +shippingCost).toFixed(2);
+    newOrder.shipping_cost = (shippingCost).toFixed(2);
     // console.log("SHiiping cost", shippingCost)
     // console.log("total amount", newOrder.total_amount)
-    newOrder.sub_amount = totalAmount;
+    newOrder.sub_amount = (totalAmount).toFixed(2);
     transaction.status = "Redirecting to Gateway";
     await transaction.save();
     newOrder.transactionId =  transaction.transactionId;

@@ -20,9 +20,12 @@ const artprintSchema = new Schema({
   art_image_2_name: String,
   art_image_3_name: String,
   art_image_4_name: String,
-  size_small_price: String,
-  size_large_price: String,
-  size_xlarge_price: String,
+  size_small_price: Number,
+  size_small_description: String,
+  size_large_price: Number,
+  size_large_description: String,
+  size_xlarge_price: Number,
+  size_xlarge_description: String,
 
 },
 {timestamps: true}

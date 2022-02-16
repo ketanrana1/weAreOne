@@ -1,14 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import LayoutNew from 'components/common/LayoutNew'
 import Router from 'next/router';
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import axios from 'axios';
 import { addToCart, incrementQuantity, removeFromCart } from 'redux/cart.slice'
+import getConfig from 'next/config'
+const { publicRuntimeConfig } = getConfig()
+import Link from 'next/link' 
 
-  
+
+
 
 const Product = ({ product, relatedProducts  }) => {
+
+  const [response, setrespone] = useState([])
+  const API = async () => {
+    const { data } = await axios.get(`${publicRuntimeConfig.backendBaseUrl}api/artprints/allArtprintsRecommended`); 
+    setrespone(data.response)
+  }
+    useEffect(() => {     
+      API(); 
+  },[]);
 
 
   if (product.length < 1) {
@@ -26,18 +39,96 @@ const Product = ({ product, relatedProducts  }) => {
     }   
   }
 
+  const sizes = {
+    small: { 
+      descp: product[0]?.size_small_description,
+      price: product[0]?.size_small_price,
+    },
+    medium: { 
+      descp: product[0]?.size_large_description,
+      price: product[0]?.size_large_price,
+    },
+    large: {
+      descp: product[0]?.size_xlarge_description,
+      price: product[0]?.size_xlarge_price
+    }      
+  }
+
+  // for(var i = 0; i < Object.keys(sizes).length; i++) {
+  //   if (sizes.small.price === 0 ) {
+  //     delete sizes.small;
+  //   } else if (sizes.medium.price === 0 ) {
+  //     delete sizes.medium;
+  //   } else if (sizes.large.price === 0 ) {
+  //     delete sizes.large;
+  //   }
+  // }
+
+  if (sizes.small.price === 0 ) {
+    delete sizes.small;
+  } 
+  if (sizes.medium.price === 0 ) {
+    delete sizes.medium;
+  } 
+  
+  if (sizes.large.price === 0 ) {
+    delete sizes.large;
+  }
+
+  console.log("SIZES", sizes)
+
+  Object.entries(sizes).map(([key, value]) => console.log(key, value))
+
+  const innerSizes = Object.entries(sizes).map(([key, value]) => value); 
+
+
     const dispatch = useDispatch();
 
     const router = useRouter()
 
-    const [quantityState, setQuantityState] = useState(1)
+    // const [quantityState, setQuantityState] = useState(1)
+
     
-    sessionStorage.setItem("usdPrice", product[0]?.size_small_price);
+
     const currency = sessionStorage.getItem("Currency")
     const currencySymbol = sessionStorage.getItem("currencySymbol");
     const convertedPrice = +sessionStorage.getItem("convertedPrice");
-    const priceInConvertedCurrency: any = Math.round( convertedPrice * product[0]?.size_small_price );
+
+    // to change the price of other currency code
+    let statrtingPriceWithoutConverstion = innerSizes[0].price
+    let startingPrice: any = innerSizes[0].price * +convertedPrice
+
+    const [sizePrice, setSizePrice] = useState(startingPrice);
+    const [priceUsd, setPriceUsd] = useState(statrtingPriceWithoutConverstion)
+    // const [sizePriceTwo, setSizePriceTwo] = useState(statrtingPriceWithoutConverstion);
+    sessionStorage.setItem("usdPrice", statrtingPriceWithoutConverstion);
+
     let usdPrice
+    let priceInConvertedCurrency = startingPrice
+
+    // useEffect(() => {
+    //   sessionStorage.setItem('usdPrice', sizePriceTwo);
+    // }, [sizePriceTwo]);
+
+    async function handleSizeChange(e) {
+      let value = e.target.value
+      const newPrice = convertedPrice * +value
+      console.log("VALUE", value)
+      priceInConvertedCurrency = Math.round( convertedPrice * value );
+      setSizePrice(newPrice)
+      setPriceUsd(value)
+      // setSizePriceTwo(value)     
+    }
+
+    useEffect(() => {
+      if(priceUsd) sessionStorage.setItem("usdPrice", priceUsd);
+    }, [priceUsd])
+    
+
+    
+    
+  
+     
 
     let styleCurrency
     if (currency === "AUD") {
@@ -57,12 +148,14 @@ const Product = ({ product, relatedProducts  }) => {
     const item = {
       product_name:product[0]?.art_name,
       product_image_name: product[0]?.art_image_1_name,
-      product_price: priceInConvertedCurrency,
+      product_price: sizePrice,
       id: product[0]?.artId,
       quantity: counter,
       currencySymbol: currencySymbol,
       currency: currency,
-      usdPrice: usdPrice
+      usdPrice: priceUsd,
+      productVariant: priceUsd,
+      productType: "artPrint"
     }
 
     const handleAtc = () => {
@@ -71,37 +164,45 @@ const Product = ({ product, relatedProducts  }) => {
     }
 
 
+    const [imgUrl, setImgUrl] = useState('')
+    function clickhandler(e) {
+      setImgUrl(e.target.src)
+    }
+
+
 
 
     return (
-        <div className="product-detail-cont container">
+      <div className="outer-artprints-cont">
+        <div className="product-detail-cont artprint container">
             <div className="row gx-5">
                 <div className="col-12 col-md-7">
                   <div className="each-image pr-md-3">
-                      <img className="each-product-image" src={product[0]?.art_image_1_name} />
+                      <img className="each-product-image" src={product[0]?.art_image_1_name}  onClick={clickhandler} data-toggle="modal" data-target="#artPrintsModalSingle" />
                   </div>
                   <div className="each-image pr-md-3">
-                      <img className="each-product-image" src={product[0]?.art_image_2_name} />
+                      <img className="each-product-image" src={product[0]?.art_image_2_name}  onClick={clickhandler} data-toggle="modal" data-target="#artPrintsModalSingle" />
                   </div>
                   <div className="each-image pr-md-3">
-                      <img className="each-product-image" src={product[0]?.art_image_3_name} />
+                      <img className="each-product-image" src={product[0]?.art_image_3_name}  onClick={clickhandler} data-toggle="modal" data-target="#artPrintsModalSingle" />
                   </div>
                   <div className="each-image pr-md-3">
-                      <img className="each-product-image" src={product[0]?.art_image_4_name} />
+                      <img className="each-product-image" src={product[0]?.art_image_4_name}  onClick={clickhandler} data-toggle="modal" data-target="#artPrintsModalSingle" />
                   </div>
                 </div>
                 <div className="col-12 col-md-5">
                   <div className="product-info-cont">
                     <h2 className="prouct-name">{product[0]?.art_name}</h2>
-                    <p className="product-by">by Jennifer Black</p>
-                    <p className="price">{currencySymbol} {priceInConvertedCurrency}</p>
+                    <p className="product-by">Artist - Jennifer Black</p>
+                    <p className="price">{currencySymbol} {sizePrice} </p>
                     <p style={styleCurrency}><i>Price in Australian dollars</i></p>
                     <form>
                         <div className="size-selector">
                             <p>Size:</p>
-                            <select>
-                                <option disabled>Select Size:</option>
-                                <option value="Small">Small - 73cm X 36cm</option>
+                            <select onChange={handleSizeChange}>
+                                {innerSizes.map(item=>(
+                                  <option value={item.price}>{item.descp}</option>
+                                ))}
                             </select>
                         </div>
                         <div className="cart">
@@ -120,18 +221,54 @@ const Product = ({ product, relatedProducts  }) => {
                       </div>
                     </form>
                     <div className="product-details-content-cont">
-                        <h4>Description:</h4>
                         {<div dangerouslySetInnerHTML={{__html: product[0]?.art_description}}></div>}
                     </div>
 
                     <div className="back-to-sale-cont">
                       <a className="button-common-new" href="/artprints">Back to All Art Prints Page</a>
                     </div>
-
                   </div>
                 </div>
+            </div>
+            <div className="modal fade" id="artPrintsModalSingle" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body art-prints-modal">
+                                <img src={imgUrl} />
+                        </div>
+                    </div>
+                </div>
             </div>     
+        </div>      
+        <div className="recommend-product-sec container">
+          <h2>You may also like</h2>
+          <div className="row">
+          { 
+          // response?.slice(0, 4).map( (data:any, index) => {                       
+          //         return (
+          //           <div className="col-6 col-md-3 each-product">
+          //             <Link href={`/product/artprints/${data.slug}`}>
+          //               <a>
+          //                 <img src={data.art_image_1_name} alt="product-image" />
+          //                 <div className="text-cont">
+          //                   <h3>{data.art_name}</h3>
+          //                   <p></p>
+          //                 </div>
+          //               </a>
+          //             </Link>
+          //         </div>
+          //         );
+          //     })
+            }
+          </div>
         </div>
+      </div>
+        
     ) 
 }
 

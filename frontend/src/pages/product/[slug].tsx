@@ -63,6 +63,7 @@ const Product = ({ product, relatedProducts  }) => {
       currencySymbol: currencySymbol,
       currency: currency,
       usdPrice: usdPrice,
+      productType: "book"
     }
 
     const handleAtc = () => {

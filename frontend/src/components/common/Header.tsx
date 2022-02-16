@@ -110,7 +110,7 @@ const Header = (props) => {
                         <Link href='/books'>
                             <a className='nav-link' onClick={handleNavCollapse}>Books</a>
                         </Link>
-                    </li>
+                    </li> 
                     <li className={router.pathname == "/artprints" ? "nav-item active" : "nav-item"}>
                         <Link href='/artprints'>
                             <a className='nav-link' onClick={handleNavCollapse}>ArtPrints</a>

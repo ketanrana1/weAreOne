@@ -1,4 +1,8 @@
-$p-color: #2caadf; 
+$p-color: #2caadf;
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, p, a, html {
+    color: #525252;
+}
 
 .product-info #image {
     max-width: 350px;

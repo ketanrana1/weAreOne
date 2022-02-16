@@ -10,18 +10,37 @@ const cartSlice = createSlice({
     initialState: [],
     reducers: {
         addToCart: (state, action) => {
-            const { quantity, id } = action.payload;
+            const { quantity, id, productVariant, productType } = action.payload;
             const itemExists = state.find((item) => item.id === id);
-            if (itemExists) {
+            if (itemExists && productType === "artPrint") {
+                const variantExists = state.find((item) => item.productVariant == productVariant);
+                if(variantExists) {
+                    variantExists.quantity += quantity;                    
+                } else if ( !variantExists ) {
+                    state.push({ ...action.payload, quantity: quantity });
+                }
+            } else if (itemExists && productType === "book") {
                 itemExists.quantity += quantity;
+
             } else {
                 state.push({ ...action.payload, quantity: quantity });
             }
         },
         incrementQuantity: (state, action) => {
-            const item = state.find((item) => item.id === action.payload);
-            item.quantity++;
+            const { quantity, id, productVariant, productType } = action.payload;
+            const itemExists = state.find((item) => item.id === id);
+            const item = state.find((item) => item.produtVariant === productVariant);
+            if (productType === "artPrint") {
+                const variantExists = state.find((item) => item.productVariant == productVariant);
+                variantExists.quantity++
+            } else if (productType === "book") {
+                itemExists.quantity++;
+            }
         },
+        // incrementQuantity: (state, action) => {
+        //     const item = state.find((item) => item.id === action.payload);
+        //     item.quantity++;
+        // },
         setUpdateQuantity: (state, action) => {
             const item = state.find((item) => item.id === action.payload.id);
             item.quantity = action.payload.quantity;

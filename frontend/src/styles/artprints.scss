@@ -86,7 +86,94 @@
     }
 }
 
+.art-print-description {
+    h2 {
+        font-size: 24px;
+        color: #2caadf;
+        font-family: 'Quintessential', cursive;
+        font-style: italic;
+        line-height: 34px;
+    }
+    h3 {
+        font-size: 24px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        
+    }
+    p {
+        span {
+            font-weight:bold;
+            font-size:18px;
+        }
+    }
 
+    ul.artprints-social-list-wrapper a img {
+        max-width: 40px;
+    }
+
+    ul.artprints-social-list-wrapper li {
+        list-style-type: none;
+    }
+
+    ul.artprints-social-list-wrapper {
+        padding-left: 0;
+        display: flex;
+        align-items: center;
+        justify-content:flex-start;    
+    }
+
+    ul.artprints-social-list-wrapper li {
+        display: inline-block;
+        padding: 0 15px;
+        font-family: 'Century Gothic', sans-serif;
+        letter-spacing: 3px;
+    }
+    
+    ul.artprints-social-list-wrapper li {
+        display: inline-block;
+        padding: 0 7px;
+        color: #21409a;
+        font-size: 30px;
+        font-family: 'Century Gothic', sans-serif;
+        letter-spacing: 3px;
+                                                
+    }
+}
+
+.product-detail-cont.artprint .each-image img {
+    cursor: pointer;
+  }
+
+#artPrintsModalSingle {
+    img {
+        max-width:100%;
+        height: auto;
+        display:block;
+        margin: 0 auto;
+    }
+    .modal-dialog {
+        max-width: 90%;
+      }
+}
+
+.recommend-product-sec {
+    h2 {
+        text-align:center;
+        margin-bottom: 30px;
+    }
+    h3 {
+        text-align:center;
+        margin-top:20px;
+        font-size: 22px;
+        &:hover {
+            text-decoration: none;  
+        }
+    }
+    img {
+        max-width:100%;
+        height:auto;
+    }
+}
 
 
 @media only screen and (max-width:768px) {

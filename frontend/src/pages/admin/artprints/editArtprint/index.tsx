@@ -31,9 +31,12 @@ const schema = {
     art_name: Joi.string().required(),
     slug: Joi.string().required(),
     art_description: Joi.string().required(),
-    size_small_price: Joi.number().required(),
-    size_large_price: Joi.number().required(),
-    size_xlarge_price: Joi.number().required()
+    size_small_price: Joi.any(),
+    size_small_description: Joi.any(),
+    size_large_price: Joi.any(),
+    size_large_description: Joi.any(),
+    size_xlarge_price: Joi.any(),
+    size_xlarge_description: Joi.any()
 
 };
 
@@ -41,7 +44,7 @@ export default function AddArtprint(props) {
 
     const { singleArtprint, ID } = props
 
-    const initialState = { art_name: singleArtprint[0].art_name, slug: singleArtprint[0].slug, art_description: singleArtprint[0].art_description, size_small_price: singleArtprint[0].size_small_price, size_large_price: singleArtprint[0].size_large_price, size_xlarge_price: singleArtprint[0].size_xlarge_price, art_image_1_name: singleArtprint[0].art_image_1_name, art_image_2_name: singleArtprint[0].art_image_2_name, art_image_3_name: singleArtprint[0].art_image_3_name, art_image_4_name: singleArtprint[0].art_image_4_name};
+    const initialState = { art_name: singleArtprint[0].art_name, slug: singleArtprint[0].slug, art_description: singleArtprint[0].art_description, size_small_price: singleArtprint[0].size_small_price, size_small_description: singleArtprint[0].size_small_description, size_large_price: singleArtprint[0].size_large_price, size_large_description: singleArtprint[0].size_large_description, size_xlarge_price: singleArtprint[0].size_xlarge_price, size_xlarge_description: singleArtprint[0].size_xlarge_description, art_image_1_name: singleArtprint[0].art_image_1_name, art_image_2_name: singleArtprint[0].art_image_2_name, art_image_3_name: singleArtprint[0].art_image_3_name, art_image_4_name: singleArtprint[0].art_image_4_name};
 
 
     const [state, setState] = useState(initialState);
@@ -72,8 +75,11 @@ export default function AddArtprint(props) {
         form.append('slug', state.slug);
         form.append('art_description', state.art_description);
         form.append('size_small_price', state.size_small_price);
+        form.append('size_small_description', state.size_small_description);
         form.append('size_large_price', state.size_large_price);
+        form.append('size_large_description', state.size_large_description);
         form.append('size_xlarge_price', state.size_xlarge_price);
+        form.append('size_xlarge_description', state.size_xlarge_description);
 
         try {
             const request : any = await axios({
@@ -154,14 +160,29 @@ export default function AddArtprint(props) {
                         {errors && <small>{errors.size_small_price}</small>}
                     </div>
                     <div className="form-group">
+                        <label >Description for size Small</label> 
+                        <input name="size_small_description" type="text" className="form-control" onChange={handleChange} value={state.size_small_description}/>
+                        {errors && <small>{errors.size_small_description}</small>}
+                    </div>
+                    <div className="form-group">
                         <label >Price for size Large</label> 
                         <input name="size_large_price" type="number" className="form-control" onChange={handleChange} value={state.size_large_price}/>
                         {errors && <small>{errors.size_large_price}</small>}
                     </div>
                     <div className="form-group">
+                        <label >Description for size Large</label> 
+                        <input name="size_large_description" type="text" className="form-control" onChange={handleChange} value={state.size_large_description}/>
+                        {errors && <small>{errors.size_large_description}</small>}
+                    </div>
+                    <div className="form-group">
                         <label >Price for size Xlarge</label> 
                         <input name="size_xlarge_price" type="number" className="form-control" onChange={handleChange} value={state.size_xlarge_price}/>
                         {errors && <small>{errors.size_xlarge_price}</small>}
+                    </div>
+                    <div className="form-group">
+                        <label >Description for size Xlarge</label> 
+                        <input name="size_xlarge_description" type="text" className="form-control" onChange={handleChange} value={state.size_xlarge_description}/>
+                        {errors && <small>{errors.size_xlarge_description}</small>}
                     </div>
 
                     <div className="form-group">

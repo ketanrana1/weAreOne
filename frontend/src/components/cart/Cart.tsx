@@ -86,7 +86,7 @@ return (
                                     &nbsp;
                                     &nbsp;
                                     <Link href="">
-                                    <a >
+                                    <a>
                                         <img onClick={() =>  {dispatch(removeFromCart(item.id))}} src="/assets/images/remove.png" alt="Remove" title="Remove" />
                                     </a>
                                     </Link>                                   

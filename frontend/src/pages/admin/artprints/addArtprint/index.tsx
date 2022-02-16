@@ -5,7 +5,7 @@ import axios from 'axios';
 import getConfig from 'next/config'
 const { publicRuntimeConfig } = getConfig() 
 
-const initialState = { art_name: "", slug: "", art_description: "", art_image_1: "", art_image_2: "", art_image_3: "", art_image_4: "", art_image_1_name: "", art_image_2_name: "", art_image_3_name: "", art_image_4_name: "", size_small_price: "", size_large_price: "", size_xlarge_price: ""};
+const initialState = { art_name: "", slug: "", art_description: "", art_image_1: "", art_image_2: "", art_image_3: "", art_image_4: "", art_image_1_name: "", art_image_2_name: "", art_image_3_name: "", art_image_4_name: "", size_small_price: "", size_small_description: "", size_large_price: "", size_large_description: "", size_xlarge_price: "", size_xlarge_description: ""};
 
 
 const initialResponseState: any = []; 
@@ -23,9 +23,12 @@ const schema = {
     art_image_2_name: Joi.any(),
     art_image_3_name: Joi.any(),
     art_image_4_name: Joi.any(),
-    size_small_price: Joi.number().required(),
-    size_large_price: Joi.number().required(),
-    size_xlarge_price: Joi.number().required()
+    size_small_price: Joi.any(),
+    size_small_description: Joi.any(),
+    size_large_price: Joi.any(),
+    size_large_description: Joi.any(),
+    size_xlarge_price: Joi.any(),
+    size_xlarge_description: Joi.any()
 
 };
 
@@ -94,8 +97,11 @@ export default function AddArtprint() {
         form.append('slug', state.slug);
         form.append('art_description', state.art_description);
         form.append('size_small_price', state.size_small_price);
+        form.append('size_small_description', state.size_small_price);
         form.append('size_large_price', state.size_large_price);
+        form.append('size_large_description', state.size_large_price);
         form.append('size_xlarge_price', state.size_xlarge_price);
+        form.append('size_xlarge_description', state.size_xlarge_price);
 
         form.append('art_image_1', fileOne);
         form.append('art_image_1_name',fileOneName);
@@ -196,14 +202,29 @@ export default function AddArtprint() {
                         {errors && <small>{errors.size_small_price}</small>}
                     </div>
                     <div className="form-group">
+                        <label >Description for size Small</label> 
+                        <input name="size_small_description" type="text" className="form-control" onChange={handleChange} value={state.size_small_description}/>
+                        {errors && <small>{errors.size_small_description}</small>}
+                    </div>
+                    <div className="form-group">
                         <label >Price for size Large</label> 
                         <input name="size_large_price" type="number" className="form-control" onChange={handleChange} value={state.size_large_price}/>
                         {errors && <small>{errors.size_large_price}</small>}
                     </div>
                     <div className="form-group">
+                        <label >Description for size Large</label> 
+                        <input name="size_large_description" type="text" className="form-control" onChange={handleChange} value={state.size_large_description}/>
+                        {errors && <small>{errors.size_large_description}</small>}
+                    </div>
+                    <div className="form-group">
                         <label >Price for size Xlarge</label> 
                         <input name="size_xlarge_price" type="number" className="form-control" onChange={handleChange} value={state.size_xlarge_price}/>
                         {errors && <small>{errors.size_xlarge_price}</small>}
+                    </div>
+                    <div className="form-group">
+                        <label >Description for size Xlarge</label> 
+                        <input name="size_xlarge_description" type="text" className="form-control" onChange={handleChange} value={state.size_xlarge_description}/>
+                        {errors && <small>{errors.size_xlarge_description}</small>}
                     </div>
 
 

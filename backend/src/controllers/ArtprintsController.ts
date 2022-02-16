@@ -64,9 +64,12 @@ const fileUploadOptions = ( ) => ({
     art_description: Joi.string().required().label('Description'),
     art_name: Joi.string().required().label('Slug'),
     slug: Joi.string().required().label('Slug'),
-    size_small_price: Joi.number().required().label('Price for Size Small'),
-    size_large_price: Joi.number().required().label('Price for Size Large'),
-    size_xlarge_price: Joi.number().required().label('Price for Size Xlarge'),
+    size_small_price: Joi.any(),
+    size_small_description: Joi.any(),
+    size_large_price: Joi.any(),
+    size_large_description: Joi.any(),
+    size_xlarge_price: Joi.any(),
+    size_xlarge_description: Joi.any(),
  
    });
 
@@ -109,9 +112,12 @@ const fileUploadOptions = ( ) => ({
     art_description: Joi.string().label('Description'),
     art_name: Joi.string().label('name'),
     slug: Joi.string().label('Slug'),
-    size_small_price: Joi.number().label('Price for Size Small'),
-    size_large_price: Joi.number().label('Price for Size Large'),
-    size_xlarge_price: Joi.number().label('Price for Size Xlarge'),
+    size_small_price: Joi.any(),
+    size_small_description: Joi.any(),
+    size_large_price: Joi.any(),
+    size_large_description: Joi.any(),
+    size_xlarge_price: Joi.any(),
+    size_xlarge_description: Joi.any(),
  
    });
 
@@ -130,8 +136,11 @@ const fileUploadOptions = ( ) => ({
       art_name: body.art_name,
       slug: body.slug,
       size_small_price: body.size_small_price,
+      size_small_description: body.size_small_description,
       size_large_price: body.size_large_price,
+      size_large_description: body.size_large_description,
       size_xlarge_price: body.size_xlarge_price,
+      size_xlarge_description: body.size_xlarge_description,
     });
 
   if(response){
@@ -164,11 +173,53 @@ const fileUploadOptions = ( ) => ({
             $concat: [process.env.IMAGES_BASE_PATH, "$art_image_4_name"]
           },
           size_small_price: 1,
+          size_small_description: 1,
           size_large_price: 1,
+          size_large_description: 1,
           size_xlarge_price: 1,
+          size_xlarge_description: 1,
         }
       }
     ]);
+     return {
+         response,
+         message: 'This action returns all printarts.'
+     };
+   }
+
+
+   @Get('/artprints/allArtprintsRecommended')
+  async getAllArtPrintsRecommended() {
+     const response = await Artprint.aggregate([
+        {
+        '$project': {
+          _id:0,
+          artId: 1,
+          art_name: 1,
+          slug: 1,
+          art_description: 1,
+          art_image_1_name: {
+            $concat: [process.env.IMAGES_BASE_PATH, "$art_image_1_name"]
+          },
+          art_image_2_name: {
+            $concat: [process.env.IMAGES_BASE_PATH, "$art_image_2_name"]
+          },
+          art_image_3_name: {
+            $concat: [process.env.IMAGES_BASE_PATH, "$art_image_3_name"]
+          },
+          art_image_4_name: {
+            $concat: [process.env.IMAGES_BASE_PATH, "$art_image_4_name"]
+          },
+          size_small_price: 1,
+          size_small_description: 1,
+          size_large_price: 1,
+          size_large_description: 1,
+          size_xlarge_price: 1,
+          size_xlarge_description: 1,
+        }
+      }
+    ]);
+    response.sort(() => Math.random() - Math.random()).slice(0, 4)
      return {
          response,
          message: 'This action returns all printarts.'
@@ -203,8 +254,11 @@ const fileUploadOptions = ( ) => ({
             $concat: [process.env.IMAGES_BASE_PATH, "$art_image_4_name"]
           },
           size_small_price: 1,
+          size_small_description: 1,
           size_large_price: 1,
+          size_large_description: 1,
           size_xlarge_price: 1,
+          size_xlarge_description: 1,
         }
       }
     ]);
@@ -243,8 +297,11 @@ const fileUploadOptions = ( ) => ({
              $concat: [process.env.IMAGES_BASE_PATH, "$art_image_4_name"]
            },
            size_small_price: 1,
+           size_small_description: 1,
            size_large_price: 1,
+           size_large_description: 1,
            size_xlarge_price: 1,
+           size_xlarge_description: 1,
          }
        }
      ]);
@@ -254,7 +311,7 @@ const fileUploadOptions = ( ) => ({
        message: 'This action returns single artprint details'
    };
  
-     }
+  }
 
    @Post('/artprint/delete/:id')
    @UseBefore(AdminAuthMiddleware)
@@ -274,8 +331,6 @@ const fileUploadOptions = ( ) => ({
         message: 'Could not delete the ArtPrint',
       }
     }
-
-
-   }
+  }
 
 }

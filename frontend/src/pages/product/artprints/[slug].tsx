@@ -239,7 +239,7 @@ const Product = ({ product, relatedProducts  }) => {
                             </button>
                         </div>
                         <div className="modal-body art-prints-modal">
-                                <img src={imgUrl} />
+                          <img src={imgUrl} />
                         </div>
                     </div>
                 </div>
@@ -248,22 +248,22 @@ const Product = ({ product, relatedProducts  }) => {
         <div className="recommend-product-sec container">
           <h2>You may also like</h2>
           <div className="row">
-          { 
-          // response?.slice(0, 4).map( (data:any, index) => {                       
-          //         return (
-          //           <div className="col-6 col-md-3 each-product">
-          //             <Link href={`/product/artprints/${data.slug}`}>
-          //               <a>
-          //                 <img src={data.art_image_1_name} alt="product-image" />
-          //                 <div className="text-cont">
-          //                   <h3>{data.art_name}</h3>
-          //                   <p></p>
-          //                 </div>
-          //               </a>
-          //             </Link>
-          //         </div>
-          //         );
-          //     })
+            {  
+            response?.slice(0, 4).map( (data:any, index) => {                       
+                    return (
+                      <div className="col-6 col-md-3 each-product">
+                        <Link href={`/product/artprints/${data.slug}`}>
+                          <a>
+                            <img src={data.art_image_1_name} alt="product-image" />
+                            <div className="text-cont">
+                              <h3>{data.art_name}</h3>
+                              <p></p>
+                            </div>
+                          </a>
+                        </Link>
+                    </div>
+                    );
+                })
             }
           </div>
         </div>

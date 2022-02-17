@@ -1,5 +1,5 @@
 import Currency from '../models/currency';
-import { Controller, Body, Get, Post,  Req,  UploadedFile, Param, QueryParam, UseBefore, JsonController} from 'routing-controllers';
+import { Controller, Body, Get, Post, Req, UploadedFile, Param, QueryParam, UseBefore, JsonController} from 'routing-controllers';
 import Joi from 'joi';
 var path = require('path');
 const {v4 : uuidv4} = require('uuid')
@@ -33,11 +33,11 @@ export class AudController {
 
     const response = await Currency.findOneAndUpdate({ "puzzle_uuid": id }, { 
       aud_price: +body.aud_price,
-     });
+    });
 
-     if(response){
-      return {message: "Price addded"};
-     }
+    if(response){
+    return {message: "Price addded"};
+    }
   
     // const newCurrency = new Currency(body);
     // const result = await newCurrency.save();
@@ -48,15 +48,12 @@ export class AudController {
     //     message: "AUD Price is added."
     //   };
     // }
-
   }   
 
   @Get('/getAudPrice') 
   async getAud( @Body() body: any, ) {
 
     const id = "84d69dd4-4a0f-45bf-89e2-7ae0d1382005"
-
-
     const response = await Currency.aggregate([
         {
           '$project': { 

@@ -23,33 +23,33 @@ export class CurrencyController {
     //   return response
     // })
 
-    // const id = "84d69dd4-4a0f-45bf-89e2-7ae0d1382005"
+    const id = "84d69dd4-4a0f-45bf-89e2-7ae0d1382005"
 
-    // const response = await Currency.aggregate([
-    //   {
-    //     '$match': {
-    //       'puzzle_uuid': id
-    //     }
-    //   }, {
-    //     '$project': {
-    //       'aud_price': 1, 
-    //       '_id': 0
-    //     }
-    //   }
-    // ]);
+    const response = await Currency.aggregate([
+      {
+        '$match': {
+          'puzzle_uuid': id
+        }
+      }, {
+        '$project': {
+          'aud_price': 1, 
+          '_id': 0
+        }
+      }
+    ]);
 
-    // const price = response[0].aud_price;
+    const price = response[0].aud_price;
 
-    //  return {
-    //      price
-    //  };
+     return {
+         price
+     };
 
     
-    if (currencyCode === "USD") {
-      return 1;
-    } else if (currencyCode === "AUD")  {
-      return 1.4;
-    }
+    // if (currencyCode === "USD") {
+    //   return 1;
+    // } else if (currencyCode === "AUD")  {
+    //   return 1.4;
+    // }
    
   }
 

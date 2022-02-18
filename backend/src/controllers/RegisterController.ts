@@ -276,7 +276,7 @@ export class RegisterController {
           success: "true",
           response: {
             token: token,
-            is_paid: "false"
+            is_paid: user.is_paid
           },
 
           user: {

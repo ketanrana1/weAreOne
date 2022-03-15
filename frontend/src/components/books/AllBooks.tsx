@@ -3,6 +3,7 @@ import ImageWithButton from 'components/common/ImageWithButton'
 import axios from 'axios';
 import getConfig from 'next/config'
 const { publicRuntimeConfig } = getConfig()
+import Link from 'next/dist/client/link';
 
 export default function AllBooks(props) {
 
@@ -25,10 +26,12 @@ export default function AllBooks(props) {
                 <p className="descp">{props.descp}</p>
                 <div className="row">
                     { 
-                    respone?.map( (data:any, index) => {                       
+                        respone?.map( (data:any, index) => {                       
                             return (
                                 <div className="col-12 col-md-4">
-                                    <ImageWithButton key={data.bookId} imgUrl={data.book_image_name} btnLnkUrl={publicRuntimeConfig.frontendBaseUrl + "product/" + data.slug} />
+                                    <a href={publicRuntimeConfig.frontendBaseUrl + "product/" + data.slug}>
+                                        <ImageWithButton key={data.bookId} imgUrl={data.book_image_name} btnLnkUrl={publicRuntimeConfig.frontendBaseUrl + "product/" + data.slug} />
+                                    </a>                                  
                                 </div>
                             );
                         })

@@ -11,7 +11,7 @@ export default function Index() {
     const [imageChanger, setimageChanger] = useState("")
     const [imageLink, setimageLink] = useState("")
 
-    const [respone, setrespone] = useState([])
+    const [response, setrespone] = useState([])
 
     const API = async () => {
         const { data } = await axios.get(`${publicRuntimeConfig.backendBaseUrl}api/artprints/allArtprints`); 
@@ -34,32 +34,22 @@ export default function Index() {
             </div>
             <div className="images-text-cont container">
                 <div className="row justify-content-evenly">
-
-                {
-                    respone?.map( (data:any, index) => { 
+                { 
+                    response?.map( (data:any, index) => { 
                         
-                        let artprintLink = `/product/artprints/${data.slug}`
-                            return (
-                                <ImageText 
-                                    key={data.artId}
-                                    imgUrl={data.art_image_1_name}
-                                    head={data.art_name}
-                                    clickhandler = {()=> {
-                                        setimageChanger(data.art_image_1_name)
-                                        setimageLink(artprintLink)
-                                    }}
-                                />
-                            );
-                        })
-                    }
+                    const artprintLink = `/product/artprints/${data.slug}`;
+                        return (
+                            <ImageText 
+                                key={data.artId}
+                                imgUrl={data.art_image_1_name}
+                                head={data.art_name}
+                                artprintLink={artprintLink}
+                            />
+                        );
+                    })
+                }
                 </div>
             </div>
-            {imageChanger && imageLink && 
-                <ModalImage 
-                imgLink={imageLink}
-                imgUrl={imageChanger}
-                />
-            }
         </div>
     )
 }

@@ -2,6 +2,20 @@ $p-color: #1a3692;
 
 /*New slider Banner starts*/
 
+#carouselExampleFade {
+    .section-new-banner {
+        .banner-container {
+            h2 {
+                max-width:100%;
+                text-shadow: 2px 2px 20px white;
+                span {
+                    font-family: "Great Vibes", cursive;
+                    font-weight: 400;
+                }
+            }
+        }
+    }  
+}
 
 /*New slider Banner ends*/
 
@@ -124,7 +138,7 @@ $p-color: #1a3692;
         color: #1f429b;
         font-weight: bold;
         font-family: "Arial Rounded MT Bold";
-        margin-top:50px;
+        margin-top:20px;
         margin-bottom: 40px;
         width:100%;  
     }
@@ -145,6 +159,7 @@ $p-color: #1a3692;
             width:100%;
             margin-bottom: 25px;
             color: #0086c4;
+            margin-top:10%;
 
         }
         a {

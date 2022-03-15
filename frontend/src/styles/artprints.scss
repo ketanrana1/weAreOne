@@ -1,4 +1,5 @@
 .art-prints-cont {
+    
     .art-prints-banner {
         position: relative;
         img {
@@ -22,8 +23,8 @@
             font-family: "Arial Rounded MT Bold";
             text-align: center;
             margin-top:12%;
-            filter: drop-shadow(0.087px 4.999px 3px rgba(255, 255, 255, 0.58));
-            text-shadow: 2px 2px 4px white;
+            /*filter: drop-shadow(0.087px 4.999px 3px rgba(255, 255, 255, 0.58));
+            text-shadow: 2px 2px 4px white;*/
         }
     }
     .textbox-cont {
@@ -75,6 +76,17 @@
 }
 
 
+.art-print-description {
+    h2 {
+        font-family: "Lucida Calligraphy";
+    }
+    
+   h3, p {
+    color:#2caadf;
+    font-family: "Lucida Calligraphy";
+   }
+}
+
 #artPrintsModal  {
 
     img {
@@ -90,7 +102,6 @@
     h2 {
         font-size: 24px;
         color: #2caadf;
-        font-family: 'Quintessential', cursive;
         font-style: italic;
         line-height: 34px;
     }
@@ -138,7 +149,7 @@
         letter-spacing: 3px;
                                                 
     }
-}
+} 
 
 .product-detail-cont.artprint .each-image img {
     cursor: pointer;

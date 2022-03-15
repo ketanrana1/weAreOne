@@ -7,11 +7,9 @@ export default function ArtPrints(props) {
             <img src={props.imgUrl} />
                 <div className="text-cont">
                     <h2>{props.heading}</h2>
-
                     <Link href={props.btnUrl} >
                         <a className="button-common">{props.btnText}</a>
-                    </Link>
-                    
+                    </Link>                   
                 </div>         
         </div>
     )

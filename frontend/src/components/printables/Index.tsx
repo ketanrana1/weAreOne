@@ -125,7 +125,7 @@ function Index(props) {
     const secFourCards = [
         {
             id: 11,
-            cardImgURL: "/assets/images/printable-sec-4-img-1.png",
+            cardImgURL: "/assets/images/printable-sec-4-img-1.jpg",
             btnLink: "/assets/images/printable-sec-4-img-1.png"
         },
         {

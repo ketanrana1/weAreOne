@@ -80,9 +80,9 @@ const Product = ({ product, relatedProducts  }) => {
                 <div className="product-info row">
                     <div className="left col-12 col-md-6">
                         <div className="image">
-                            <a href="/" title="We Are One book (Hardcover)" className="colorbox cboxElement">
-                                <img src={product[0]?.book_image_name} title="We Are One book (Hardcover)" alt="We Are One book (Hardcover)" id="image" />
-                            </a>
+                          <img src={product[0]?.book_image_name} title="We Are One book (Hardcover)" alt="We Are One book (Hardcover)" id="image" />
+                            {/* <a href="/" title="We Are One book (Hardcover)" className="colorbox cboxElement"> 
+                            </a> */}
                         </div>
                     </div>
                     <div className="right col-12 col-md-6">

@@ -1031,15 +1031,14 @@ display: inline-block;
     }
     
     .mainFooter {
-        .wao-ft-form_wrapper {
-            
+        .wao-ft-form_wrapper {         
             flex-direction: column !important;
         }
         input[type=image] {
             max-width: 65px;
             margin-top: 20px;
         }
-        p.wao-ft-inspire-text{
+        p.wao-ft-inspire-text {
             margin-top: 30px;
         }
         input#email {
@@ -1072,9 +1071,9 @@ display: inline-block;
 
 .image-product-cart img {
     max-width: 30px;
-height: auto;
-display: block;
-margin: 0 auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 
@@ -1118,4 +1117,11 @@ margin: 0 auto;
 
 body, html {
     scroll-behavior: auto !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Arial Rounded MT Bold";
+}
+p {
+    font-family: "Century Gothic";
 }

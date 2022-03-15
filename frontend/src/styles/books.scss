@@ -1,4 +1,10 @@
 .sec-all-books-page {
+    .sec-childs-bookshelf {
+        .button-common-new {
+            display: none;
+        }
+    }
+    
     .top-image {
         width:100%;
         height: auto;

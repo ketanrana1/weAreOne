@@ -113,7 +113,7 @@ const Header = (props) => {
                     </li> 
                     <li className={router.pathname == "/artprints" ? "nav-item active" : "nav-item"}>
                         <Link href='/artprints'>
-                            <a className='nav-link' onClick={handleNavCollapse}>ArtPrints</a>
+                            <a className='nav-link' onClick={handleNavCollapse}>Art and Prints</a>
                         </Link>
                     </li>
                     <li className={router.pathname == "/application" ? "nav-item active" : "nav-item"}>

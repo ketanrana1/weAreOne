@@ -45,7 +45,7 @@ function SectionFourCards(props) {
                                 <img src={imageChanger} />
                                 <div className="btmCont">
                                     <button type="button" className="btmButton">
-                                        <a href ={imageLink} target="_blank">Download </a>
+                                        <a href ={imageLink} download={imageLink}>Download </a>
                                     </button>
                                 </div>
                             </div>

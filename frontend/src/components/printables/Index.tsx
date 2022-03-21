@@ -185,7 +185,6 @@ function Index(props) {
             <SectionFiveCards
             loopData={secFiveCards}
             />
-           
         </div>
     )
 }

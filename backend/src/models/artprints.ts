@@ -26,6 +26,7 @@ const artprintSchema = new Schema({
   size_large_description: String,
   size_xlarge_price: Number,
   size_xlarge_description: String,
+  priority: Number,
 
 },
 {timestamps: true}

@@ -11,11 +11,12 @@ export default function Index() {
     const [imageChanger, setimageChanger] = useState("")
     const [imageLink, setimageLink] = useState("")
 
-    const [response, setrespone] = useState([])
+    const [response, setresponse] = useState([])
 
     const API = async () => {
-        const { data } = await axios.get(`${publicRuntimeConfig.backendBaseUrl}api/artprints/allArtprints`); 
-        setrespone(data.response)
+        const { data } = await axios.get(`${publicRuntimeConfig.backendBaseUrl}api/artprints/allArtprints`);
+        const newData = data.response.sort((a, b) => a.priority - b.priority);
+        setresponse(newData)
     }
 
     useEffect(() => {    

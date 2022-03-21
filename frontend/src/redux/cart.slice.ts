@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-
 // const currency = sessionStorage.getItem("Currency")
 // const currencySymbol = sessionStorage.getItem("currencySymbol");
 // const convertedPrice = +sessionStorage.getItem("convertedPrice");
@@ -21,7 +20,6 @@ const cartSlice = createSlice({
                 }
             } else if (itemExists && productType === "book") {
                 itemExists.quantity += quantity;
-
             } else {
                 state.push({ ...action.payload, quantity: quantity });
             }

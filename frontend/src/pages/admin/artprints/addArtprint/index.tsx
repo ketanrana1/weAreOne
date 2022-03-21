@@ -5,7 +5,7 @@ import axios from 'axios';
 import getConfig from 'next/config'
 const { publicRuntimeConfig } = getConfig() 
 
-const initialState = { art_name: "", slug: "", art_description: "", art_image_1: "", art_image_2: "", art_image_3: "", art_image_4: "", art_image_1_name: "", art_image_2_name: "", art_image_3_name: "", art_image_4_name: "", size_small_price: "", size_small_description: "", size_large_price: "", size_large_description: "", size_xlarge_price: "", size_xlarge_description: ""};
+const initialState = { art_name: "", slug: "", art_description: "", art_image_1: "", art_image_2: "", art_image_3: "", art_image_4: "", art_image_1_name: "", art_image_2_name: "", art_image_3_name: "", art_image_4_name: "", size_small_price: "", size_small_description: "", size_large_price: "", size_large_description: "", size_xlarge_price: "", size_xlarge_description: "", priority: ""};
 
 
 const initialResponseState: any = []; 
@@ -24,11 +24,12 @@ const schema = {
     art_image_3_name: Joi.any(),
     art_image_4_name: Joi.any(),
     size_small_price: Joi.any(),
-    size_small_description: Joi.any(),
+    size_small_description: Joi.any(), 
     size_large_price: Joi.any(),
     size_large_description: Joi.any(),
     size_xlarge_price: Joi.any(),
-    size_xlarge_description: Joi.any()
+    size_xlarge_description: Joi.any(),
+    priority: Joi.any(),
 
 };
 
@@ -89,8 +90,6 @@ export default function AddArtprint() {
         e.preventDefault();
         setErrors(validate());
 
-           
-
         let form = new FormData();
 
         form.append('art_name', state.art_name);
@@ -102,6 +101,7 @@ export default function AddArtprint() {
         form.append('size_large_description', state.size_large_price);
         form.append('size_xlarge_price', state.size_xlarge_price);
         form.append('size_xlarge_description', state.size_xlarge_price);
+        form.append('priority', state.priority);
 
         form.append('art_image_1', fileOne);
         form.append('art_image_1_name',fileOneName);
@@ -173,7 +173,6 @@ export default function AddArtprint() {
                         {errors && <small>{errors.art_image_1}</small>}
                     </div>
 
-
                     <div className="form-group">
                         <label>ArtPrint Image Two</label>
                         <input name="art_image_1" type="file" className="form-control-file" id="exampleFormControlFile1" onChange={saveFileTwo} />
@@ -192,9 +191,6 @@ export default function AddArtprint() {
                         <input name="art_image_1" type="file" className="form-control-file" id="exampleFormControlFile1" onChange={saveFileFour} />
                         {errors && <small>{errors.art_image_1}</small>}
                     </div>
-
-
-
 
                     <div className="form-group">
                         <label >Price for size Small</label> 
@@ -227,18 +223,21 @@ export default function AddArtprint() {
                         {errors && <small>{errors.size_xlarge_description}</small>}
                     </div>
 
-
-
                     <div className="form-group">
                         <label >Content</label><br/>
                         <textarea className="form-control" rows={10} id="story" name="art_description" style={{width: "100%"}} onChange={handleChange} value={state.art_description}> </textarea>
                         {errors && <small>{errors.art_description}</small>}
                     </div>
+
+                    <div className="form-group">
+                        <label >Priority</label><br/>
+                        <input name="priority" type="number" className="form-control" onChange={handleChange} value={state.priority}/>
+                        {errors && <small>{errors.priority}</small>}
+                    </div>
                 
                     <div className="form-group">
                         <button className="btn btn-primary" type="submit">Submit</button>
-                    </div> 
-                                       
+                    </div>                                    
                 </form>
                 <div className="response-cont">
                     <h6>{responseState?.data?.message}</h6>
@@ -249,8 +248,8 @@ export default function AddArtprint() {
 
 AddArtprint.getLayout = function getLayout(page) {
     return (
-      <AdminLayout>
+        <AdminLayout>
             {page}
-      </AdminLayout>
+        </AdminLayout>
     )
   }

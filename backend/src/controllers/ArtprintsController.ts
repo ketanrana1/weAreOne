@@ -70,6 +70,7 @@ const fileUploadOptions = ( ) => ({
     size_large_description: Joi.any(),
     size_xlarge_price: Joi.any(),
     size_xlarge_description: Joi.any(),
+    priority: Joi.any(),
  
    });
 
@@ -118,6 +119,7 @@ const fileUploadOptions = ( ) => ({
     size_large_description: Joi.any(),
     size_xlarge_price: Joi.any(),
     size_xlarge_description: Joi.any(),
+    priority: Joi.any(),
  
    });
 
@@ -141,6 +143,7 @@ const fileUploadOptions = ( ) => ({
       size_large_description: body.size_large_description,
       size_xlarge_price: body.size_xlarge_price,
       size_xlarge_description: body.size_xlarge_description,
+      priority: body.priority,
     });
 
   if(response){
@@ -178,6 +181,7 @@ const fileUploadOptions = ( ) => ({
           size_large_description: 1,
           size_xlarge_price: 1,
           size_xlarge_description: 1,
+          priority: 1,
         }
       }
     ]);
@@ -256,17 +260,18 @@ const fileUploadOptions = ( ) => ({
           size_small_price: 1,
           size_small_description: 1,
           size_large_price: 1,
-          size_large_description: 1,
+          size_large_description: 1, 
           size_xlarge_price: 1,
           size_xlarge_description: 1,
+          priority: 1,
         }
       }
     ]);
 
     return {
-      singleArtprint,
-      message: 'This action returns single artprint details'
-  };
+        singleArtprint,
+        message: 'This action returns single artprint details'
+    };
 
     }
 
@@ -302,6 +307,7 @@ const fileUploadOptions = ( ) => ({
            size_large_description: 1,
            size_xlarge_price: 1,
            size_xlarge_description: 1,
+           priority: 1,
          }
        }
      ]);

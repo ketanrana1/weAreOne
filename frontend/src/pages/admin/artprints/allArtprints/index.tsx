@@ -17,22 +17,15 @@ export default function AllArtprints(props) {
     async function handleDeleteClick(id: any) {
         try { 
 
-
-        // const response = await axios.post(`${publicRuntimeConfig.backendBaseUrl}api/artprint/delete/${id}`);
-        // setResponseState(response);
-        // return router.push(router.asPath)
-
-        const response : any = await axios({
-            method: 'post',    
-            url: `${publicRuntimeConfig.backendBaseUrl}api/artprint/delete/${id}`,
-            headers: {
-                'Authorization': `${sessionStorage.getItem('token')}`
-            }            
-            });
-            setResponseState(response);
-            return router.push(router.asPath) 
-
-
+            const response : any = await axios({
+                method: 'post',    
+                url: `${publicRuntimeConfig.backendBaseUrl}api/artprint/delete/${id}`,
+                headers: {
+                    'Authorization': `${sessionStorage.getItem('token')}`
+                }            
+                });
+                setResponseState(response);
+                return router.push(router.asPath) 
         } catch (error) {
             console.log(error);
         }
@@ -48,8 +41,9 @@ export default function AllArtprints(props) {
             <div className="row py-3">
                 {AllArtprints.map( (data:any, index) => {                       
                     return (
-                        <div className="col-12 each-book" key={index}>
+                        <div className="col-12 each-book mb-3" key={index}>
                             <h6>{data.art_name}</h6>
+                            <p className="mb-2">Priority: {data.priority}</p>
                             <div className="d-flex">
                                 <p className="link-items">
                                 <span><a href={"/admin/artprints/editArtprint/?id=" + data.artId}>Edit</a></span>

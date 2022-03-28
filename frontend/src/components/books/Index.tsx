@@ -8,8 +8,8 @@ export default function Index() {
             <Banner imgURL="/assets/images/books-banner-min.png" />        
             <AllBooks
             topImg="/assets/images/NewRainbow strip-min.png"
-            topHead="Loreum Ipsum"
-            descp="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. "
+            topHead="Books are more essential than ever!"
+            descp="Tactile, vibrant, and personal, they weave wonder, mystery, and imagination. We Are One & We Are Love eloquently share messages of Unity & Love and are favorites for many children (known from reviews, of which I'm grateful)! These books celebrate life in all its diversity and Love in all its grace!"
             btmHead="BUY YOURS HERE"
             />
         </>

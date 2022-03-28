@@ -82,8 +82,9 @@ $p-text-color: #1f429b;
     }
     .product-info-cont {
         h2.prouct-name {
-            color: #525252;
-            font-family: 'Roboto';  
+            color: #009adc;
+            font-family: 'Roboto';
+            margin-bottom: 0;  
         }
         .product-by {
             font-weight: bold;
@@ -92,6 +93,9 @@ $p-text-color: #1f429b;
         .price {
             font-weight: bold;
             font-size: 22px;
+            margin-bottom: 30px;
+            margin-top:10px;
+            color: #454545;
         }
         .size-selector {
             margin-bottom:20px;
@@ -148,6 +152,11 @@ $p-text-color: #1f429b;
             margin-left: 10px;
         }   
     }
+
+    .descp-cont {
+        
+    }
+
 }
 /*Art Prints*/
 
@@ -169,4 +178,92 @@ $p-text-color: #1f429b;
             }
         }
     }
+}
+
+
+.each-product-image-book:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.back-to-sale-cont {
+    a {
+        border: 1px solid transparent;
+        background: -webkit-radial-gradient(white, #3aabe8);
+        background: radial-gradient(white, #3aabe8);
+        border-radius: 8px;
+        padding: 10px 17px;
+        font-size: 20px;
+        text-decoration: none;
+        color: #1a3692;
+        font-weight: bold;
+        box-shadow: 0px 0px 14px 0px #a4a4a4;
+        -webkit-box-shadow: 0px 0px 14px 0px #a4a4a4;
+        -moz-box-shadow: 0px 0px 14px 0px #a4a4a4;
+        -webkit-transition: all 0.3s ease-in;
+        transition: all 0.3s ease-in;
+        display: inline-block;
+        margin-top:20px;
+        &:hover {
+            text-decoration: none;
+            color: #1a3692;
+            -webkit-transition: all 0.3s ease-in;
+            transition: all 0.3s ease-in;
+            -webkit-box-shadow: 0px 10px 20px #404040;
+            box-shadow: 0px 10px 20px #404040;
+            border: 1px solid #3aabe8;
+        }
+    }
+    
+}
+
+#button-cart {
+    background: #3aabe8;
+    border: none;
+    color: white;
+    padding: 13px;
+    margin-left: 10px;
+  }
+
+
+
+  ul.footer-social-list-wrapper a img {
+    max-width: 40px;
+}
+
+ul.footer-social-list-wrapper li {
+    list-style-type: none;
+}
+
+ul.footer-social-list-wrapper {
+    padding-left: 0;
+    display: flex;
+    align-items: center;    
+}
+
+ul.footer-social-list-wrapper li {
+    display: inline-block;
+    padding: 0 15px;
+    font-family: 'Century Gothic', sans-serif;
+    letter-spacing: 3px;
+}
+
+ul.footer-social-list-wrapper li {
+    display: inline-block;
+    padding: 0 7px;
+    color: #21409a;
+    font-size: 30px;
+    font-family: 'Century Gothic', sans-serif;
+    letter-spacing: 3px;
+                                            
+}
+
+.text-font-color-blue {
+    font-family: Lucida Calligraphy !important;
+    color: #2caadf !important;
+}
+
+
+.descp-cont {
+    font-size:18px;
 }

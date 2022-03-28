@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import axios from 'axios';
 import LayoutNew from 'components/common/LayoutNew'
 import { addToCart, incrementQuantity, removeFromCart } from 'redux/cart.slice'
+import Link from 'next/link' 
 
 
 const Product = ({ product, relatedProducts  }) => {
@@ -72,24 +73,24 @@ const Product = ({ product, relatedProducts  }) => {
     }
   
 
-  return (
+  return ( 
     <>
-        <div className="single-product p-3 p-md-5" >
-            <div id="content" className="container pt-3"> 
-                <h1>{product[0]?.book_name}</h1>
-                <div className="product-info row">
-                    <div className="left col-12 col-md-6">
-                        <div className="image">
-                          <img src={product[0]?.book_image_name} title="We Are One book (Hardcover)" alt="We Are One book (Hardcover)" id="image" />
-                            {/* <a href="/" title="We Are One book (Hardcover)" className="colorbox cboxElement"> 
-                            </a> */}
-                        </div>
+      <div className="outer-artprints-cont">
+        <div className="product-detail-cont artprint container">
+            <div className="row gx-5">
+                <div className="col-12 col-md-7">
+                  <div className="each-image pr-md-3">
+                      <img className="each-product-image-book" src={product[0]?.book_image_name} title="We Are One book (Hardcover)" alt="We Are One book (Hardcover)" id="image" />
+                  </div>
+                </div>
+                <div className="col-12 col-md-5">
+                  <div className="product-info-cont">
+                    <h2 className="prouct-name">{product[0]?.book_name}</h2>
+                    <p className="product-by">Artist/Author - Jennifer Black</p>
+                    <div className="price">Price: {currencySymbol}{priceInConvertedCurrency}<br/>
+                      <p style={styleCurrency}><i>Price in Australian dollars</i></p>
                     </div>
-                    <div className="right col-12 col-md-6">
-                        <div className="price">Price: {currencySymbol}{priceInConvertedCurrency}<br/>
-                        <p style={styleCurrency}><i>Price in Australian dollars</i></p>
-                        </div>
-                        <div className="cart">
+                    <div className="cart">
                             <div className="cart-inner-cont">Qty:
                                 <div className="counter-cont-main">
                                     <div className="counter-cont">
@@ -102,17 +103,26 @@ const Product = ({ product, relatedProducts  }) => {
                                 </div>
                                 <input onClick={handleAtc} type="button" value="Add to Cart" id="button-cart" className="button" />
                             </div>
-                        </div> 
-                    </div>
+                      </div> 
+                      <div id="tab-description" className="tab-content py-5">
+                        <div dangerouslySetInnerHTML={{__html: product[0]?.book_description}}></div>
+                      </div>
+
+                      <ul className="footer-social-list-wrapper mb-4"><li><a href="https://www.instagram.com/worldofweareone_/" target="_blank">
+                        <img src="/assets/images/instagram.png" alt="" /></a></li><li><a href="https://www.facebook.com/pages/We-Are-One/160342653631" target="_blank">
+                          <img src="/assets/images/facebook.png" alt="" /></a></li><li><a href="https://pin.it/3i4QhaN" target="_blank">
+                            <img src="/assets/images/pinterest.png" alt="" /></a></li><li><a href="https://www.youtube.com/channel/UCmQiaZw6_1zAmVgB9bIYoSw" target="_blank">
+                              <img src="/assets/images/channel-icon.png" alt="" /></a></li></ul>
+                      <div className="back-to-sale-cont mt-4">
+                        <Link href="/books">
+                          Back to All Books Page
+                        </Link>
+                      </div>
+                  </div>
                 </div>
-                <div id="tab-description" className="tab-content py-5">
-                <div dangerouslySetInnerHTML={{__html: product[0]?.book_description}}></div>
-                </div>
-                <div className="back-to-sale-cont">
-                  <a className="button-common-new" href="/books">Back to All Books Page</a>
-                </div>     
-            </div>
-        </div>
+            </div>    
+        </div>      
+      </div>
     </>
 
   )

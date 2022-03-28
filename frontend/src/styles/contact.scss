@@ -8,22 +8,22 @@
     }
     input, textarea {
         width: 100%;
-        border: solid 1px #1f429b;
+        border: solid 1px #009adc;
         background-color: #ffffff;
         padding:5px;
         border-radius: 4px;
     }
     input.button {
         width: 115px;
-        background: #1f429b;
+        background: #009adc;
         color: white;
         border-radius: 50px;
     }
     h2 {
         font-size: 28px;
         font-weight: bold;
-        margin-bottom: 15px;
-        color: #1f429b;
+        margin-bottom: 5px;
+        color: #009adc;
         font-family: 'Nunito';
     }
     .inline-capture {
@@ -31,6 +31,12 @@
     }
     .inline-capture input {
         margin-right: 20px;
+    }
+    p {
+        color:#009adc;
+        font-size:20px;
+        margin-bottom: 35px;
+        font-weight:300;
     }
         
 }

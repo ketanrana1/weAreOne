@@ -107,7 +107,8 @@ const Contact = () => {
                         <form className="contact-us-form-wrapper" onSubmit={handleSubmit} encType="multipart/form-data">
                             <div className="row">
                                 <div className="col-md-12">
-                                    <h2 className="title">Contact Form</h2>
+                                    <h2 className="title">Contact</h2>
+                                    <p>I’m always grateful to hear from you and your loved ones!</p>
                                 </div>
                                 <div className="col-md-6">
                                     <div className="common-input-field-wrapper">

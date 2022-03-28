@@ -745,7 +745,7 @@ ul.footer-social-list-wrapper, .wao-footer-wrapper .wao-ft-inspire-text {
         display: flex;
         align-items: center;
         h3 {
-            margin-bottom: 0;
+            margin-bottom: 0; 
             margin-top:5px;
             font-size: 28px;
             letter-spacing: 2px;
@@ -1124,4 +1124,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 p {
     font-family: "Century Gothic";
+}
+
+.text-font-color-blue {
+    font-family: Lucida Calligraphy;
+    color: #2caadf;
+}
+
+
+.each-product-image-book:hover {
+    transform: none !important;
+    box-shadow: none !important;
 }

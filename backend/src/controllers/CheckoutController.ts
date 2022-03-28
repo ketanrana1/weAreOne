@@ -78,7 +78,7 @@ export class CheckoutController {
     const transaction = new Transaction();
     newOrder.ordered_items = body.items;
     newOrder.userId = body.userID;
-    let shippingCost: any = (+convertedPrice * 20).toFixed(2);
+    let shippingCost: any = (+convertedPrice * 25).toFixed(2);
     // console.log("SHIPPING", shippingCost)
     let totalAmount: any = 0; 
     for (let i =0 ; i < newOrder.ordered_items.length ; i ++) {

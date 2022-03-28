@@ -108,6 +108,7 @@ const Product = ({ product, relatedProducts  }) => {
                         <div dangerouslySetInnerHTML={{__html: product[0]?.book_description}}></div>
                       </div>
 
+                      <p>Share:</p>
                       <ul className="footer-social-list-wrapper mb-4"><li><a href="https://www.instagram.com/worldofweareone_/" target="_blank">
                         <img src="/assets/images/instagram.png" alt="" /></a></li><li><a href="https://www.facebook.com/pages/We-Are-One/160342653631" target="_blank">
                           <img src="/assets/images/facebook.png" alt="" /></a></li><li><a href="https://pin.it/3i4QhaN" target="_blank">

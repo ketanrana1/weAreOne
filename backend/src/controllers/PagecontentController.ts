@@ -7,7 +7,6 @@ import AdminAuthMiddleware from 'middlewares/AdminAuthMiddleware';
 @JsonController('/api') 
 export class PagecontentController {
   @Post('/addContent/wholesale')
-  @UseBefore(AdminAuthMiddleware)
   async addWholesaleContent( @Body() body: any, @UploadedFile("", { }) file: any ) {
 
     const contentSchema = Joi.object({
@@ -60,7 +59,6 @@ export class PagecontentController {
 
 
   @Post('/addContent/privacyPolicy')
-  @UseBefore(AdminAuthMiddleware)
   async addPrivacyPolicyContent( @Body() body: any, @UploadedFile("", { }) file: any ) {
 
     const contentSchema = Joi.object({
@@ -114,7 +112,6 @@ async getPrivacyPolicyContent(@Body() body: any) {
 
 
 @Post('/addContent/termsAndConditions')
-@UseBefore(AdminAuthMiddleware)
 async addHelpContent( @Body() body: any, @UploadedFile("", { }) file: any ) {
 
   const contentSchema = Joi.object({
@@ -169,7 +166,6 @@ async getTermsAndConditionsContent(@Body() body: any) {
 }
 
 @Post('/addContent/shipping')
-@UseBefore(AdminAuthMiddleware)
 async addShippingContent( @Body() body: any, @UploadedFile("", { }) file: any ) {
 
   const contentSchema = Joi.object({
@@ -223,7 +219,6 @@ async getShippingContent(@Body() body: any) {
 }
 
 @Post('/addContent/HelpAndSupport')
-@UseBefore(AdminAuthMiddleware)
 async addTermsAndConditionsContent( @Body() body: any, @UploadedFile("", { }) file: any ) {
 
   const contentSchema = Joi.object({

@@ -30,7 +30,7 @@ export default function WholesaleAndDistribution() {
                     response?.map( (data:any, index) => {                       
                             return (
                                 <div className="">
-                                    {data.content}
+                                    <div dangerouslySetInnerHTML={{__html: data.content}}></div>
                                 </div>
                             );
                         })
@@ -40,7 +40,6 @@ export default function WholesaleAndDistribution() {
         
     )
 }
-
 WholesaleAndDistribution.getLayout = function getLayout(page) {
     return (
       <LayoutNew>

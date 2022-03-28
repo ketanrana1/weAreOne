@@ -29,7 +29,7 @@ export default function Shipping() {
                     response?.map( (data:any, index) => {                       
                             return (
                                 <div className="">
-                                    {data.content}
+                                    <div dangerouslySetInnerHTML={{__html: data.content}}></div>
                                 </div>
                             );
                         })

@@ -29,7 +29,7 @@ function SectionThreeCards(props) {
                         })
                     }
                 </div>
-            </div>
+            </div> 
             { imageChanger && imageLink && 
                 <div className="modal fade printables-modal" id="printablesModalThree" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">

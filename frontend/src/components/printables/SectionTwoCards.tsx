@@ -30,11 +30,11 @@ function SectionTwoCards(props) {
                     }
                     <div className="col-12 pt-5">
                         <Card 
-                            cardImgURL="/assets/images/printable-sec-2-img-1.png" 
-                            btnLink="/assets/images/printable-sec-2-img-1.png" 
+                            cardImgURL="/assets/images/Long-colouring-in.jpg" 
+                            btnLink="/assets/images/Long-colouring-in.jpg" 
                             clickhandler = {()=> {
-                                setimageChanger('/assets/images/printable-sec-2-img-1.png')
-                                setimageLink('/assets/images/printable-sec-2-img-1.png')
+                                setimageChanger('/assets/images/Long-colouring-in.jpg')
+                                setimageLink('/assets/images/Long-colouring-in.jpg')
                             }}
                             modalId="#printablesModalTwo"
                         />

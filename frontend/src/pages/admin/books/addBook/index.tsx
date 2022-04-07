@@ -5,7 +5,7 @@ import axios from 'axios';
 import getConfig from 'next/config'
 const { publicRuntimeConfig } = getConfig() 
  
-const initialState = { book_name: "", slug: "", book_description: "", book_price: "", book_status: "", book_content: "", book_image: {}, book_image_name:'', book_download: "", book_quantity: "" };
+const initialState = { book_name: "", slug: "", book_description: "", book_description_two: "", book_price: "", book_status: "", book_content: "", book_image: {}, book_image_name:'', book_download: "", book_quantity: "" };
 
 const initialResponseState: any = [];
 
@@ -14,6 +14,7 @@ const schema = {
     book_name: Joi.string().required(),
     slug: Joi.string().required(),
     book_description: Joi.string().required(),
+    book_description_two: Joi.string(),
     book_price: Joi.number().required(),
     book_status: Joi.number().required(),
     book_content: Joi.string().required(),
@@ -64,6 +65,7 @@ export default function AddBook() {
         form.append('book_name', state.book_name);
         form.append('slug', state.slug);
         form.append('book_description', state.book_description);
+        form.append('book_description_two', state.book_description_two);
         form.append('book_price', state.book_price);
         form.append('book_status', state.book_status);
         form.append('book_content', state.book_content);
@@ -130,6 +132,11 @@ export default function AddBook() {
                         <label >Book Description</label>
                         <textarea name="book_description" className="form-control" rows={8} onChange={handleChange} value={state.book_description} />
                         {errors && <small>{errors.book_description}</small>}
+                    </div>
+                    <div className="form-group">
+                        <label >Book Description Two</label>
+                        <textarea name="book_description_two" className="form-control" rows={8} onChange={handleChange} value={state.book_description_two} />
+                        {errors && <small>{errors.book_description_two}</small>}
                     </div>
                     <div className="form-group">
                         <label >Book Price</label> 

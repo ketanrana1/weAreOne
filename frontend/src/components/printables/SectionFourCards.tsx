@@ -26,6 +26,8 @@ function SectionFourCards(props) {
                                     }}
                                     modalId="#printablesModalFour"
                                     />
+                                    <h2 className="project-bundle-text">{item.title}</h2>
+                                    <p className="project-bundle-text">{item.descp}</p>
                                 </div>
                             );
                         })

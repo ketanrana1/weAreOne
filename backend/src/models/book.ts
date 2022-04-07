@@ -12,6 +12,7 @@ const bookSchema = new Schema({
   book_name: String, 
   slug: String,
   book_description: String,
+  book_description_two: String,
   book_quantity: Number,
   book_image: String,
   book_image_name: String,

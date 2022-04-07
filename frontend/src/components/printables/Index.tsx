@@ -126,12 +126,14 @@ function Index(props) {
         {
             id: 11,
             cardImgURL: "/assets/images/printable-sec-4-img-1.jpg",
-            btnLink: "/assets/images/printable-sec-4-img-1.png"
+            btnLink: "/assets/images/printable-sec-4-img-1.png",
+            title: "Planet Project Bundle",
+            descp: "A great activity for the class or family to do!",
         },
         {
             id: 22,
             cardImgURL: "/assets/images/printable-sec-4-img-2.png",
-            btnLink: "/assets/images/printable-sec-4-img-2.png"
+            btnLink: "/assets/images/printable-sec-4-img-2.png",
         }
     ]
 

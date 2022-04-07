@@ -82,7 +82,8 @@ const Product = ({ product, relatedProducts  }) => {
                   <div className="each-image pr-md-3">
                       <img className="each-product-image-book" src={product[0]?.book_image_name} title="We Are One book (Hardcover)" alt="We Are One book (Hardcover)" id="image" />
                   </div>
-                </div>
+                  <div className="book-images-btm" dangerouslySetInnerHTML={{__html: product[0]?.book_description_two}}></div>
+                </div> 
                 <div className="col-12 col-md-5">
                   <div className="product-info-cont">
                     <h2 className="prouct-name">{product[0]?.book_name}</h2>

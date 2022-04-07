@@ -180,6 +180,13 @@ $p-text-color: #1f429b;
     }
 }
 
+.book-images-btm {
+    img {
+        max-width:100%;
+        height: auto;
+    }
+}
+
 
 .each-product-image-book:hover {
     transform: none;
@@ -266,4 +273,4 @@ ul.footer-social-list-wrapper li {
 
 .descp-cont {
     font-size:18px;
-}
+} 

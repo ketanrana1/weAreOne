@@ -113,7 +113,7 @@ const Header = (props) => {
                     </li> 
                     <li className={router.pathname == "/artprints" ? "nav-item active" : "nav-item"}>
                         <Link href='/artprints'>
-                            <a className='nav-link' onClick={handleNavCollapse}>Art and Prints</a>
+                            <a className='nav-link' onClick={handleNavCollapse}>Art Prints</a>
                         </Link>
                     </li>
                     <li className={router.pathname == "/application" ? "nav-item active" : "nav-item"}>
@@ -123,7 +123,7 @@ const Header = (props) => {
                     </li>
                     <li className={router.pathname == "/printables" ? "nav-item active" : "nav-item"}>
                         <Link href='/printables'>
-                            <a className='nav-link' onClick={handleNavCollapse}>Colouring</a>
+                            <a className='nav-link' onClick={handleNavCollapse}>Coloring</a>
                         </Link>
                     </li>
                     <li className={router.pathname == "/channel" ? "nav-item active" : "nav-item"}>

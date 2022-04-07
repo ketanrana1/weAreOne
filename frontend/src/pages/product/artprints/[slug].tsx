@@ -243,7 +243,7 @@ const Product = ({ product, relatedProducts  }) => {
                         </div>
                     </div>
                 </div>
-            </div>     
+            </div>      
         </div>      
         <div className="recommend-product-sec container">
           <h2>You may also like</h2>

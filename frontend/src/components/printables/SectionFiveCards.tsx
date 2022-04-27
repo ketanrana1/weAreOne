@@ -10,7 +10,7 @@ function SectionFiveCards(props) {
         <section className="secFiveCards">
             <div className="container">
                 <div className="row d-flex px-1 py-5 py-md-5">
-                    <div className="col-4 py-md-4 py-md-0 top-cont">
+                    <div className="col-12 col-sm-8 mb-4 mb-sm-0 py-md-4 py-md-0 top-cont">
                         <Card 
                             cardImgURL="/assets/images/printable-sec-5-img-1.png" 
                             btnLink="/assets/images/printable-sec-5-img-1.png" 
@@ -21,9 +21,9 @@ function SectionFiveCards(props) {
                             modalId="#printablesModalFive"
                         />
                     </div>
-                    <div className="col-4">
+                    <div className="col-12 col-sm-4">
                         <div className="row d-flex new-bottm-cont">
-                            <div className="col-12 px-md-5 py-md-4 py-md-0">
+                            <div className="col-12 mb-4 mb-sm-0 px-md-5 py-md-4 py-md-0">
                                 <Card 
                                 key={props.loopData[0].id}
                                 cardImgURL={props.loopData[0].cardImgURL}
@@ -35,7 +35,7 @@ function SectionFiveCards(props) {
                                 modalId="#printablesModalFive"
                                 />
                             </div>
-                            <div className="col-12 px-md-5 py-md-4 py-md-0">
+                            <div className="col-12 mb-4 mb-sm-0 px-md-5 py-md-4 py-md-0">
                                 <Card 
                                 key={props.loopData[1].id}
                                 cardImgURL={props.loopData[1].cardImgURL}
@@ -47,11 +47,7 @@ function SectionFiveCards(props) {
                                 modalId="#printablesModalFive"
                                 />
                             </div>
-                        </div>
-                    </div>
-                    <div className="col-4 ">
-                        <div className="row d-flex new-bottm-cont">
-                            <div className="col-12 px-md-5 py-md-4 py-md-0">
+                            <div className="col-12 mb-4 mb-sm-0 px-md-5 py-md-4 py-md-0">
                                 <Card 
                                     key={props.loopData[2].id}
                                     cardImgURL={props.loopData[2].cardImgURL}
@@ -63,7 +59,23 @@ function SectionFiveCards(props) {
                                     modalId="#printablesModalFive"
                                 />
                             </div>
-                            <div className="col-12 px-md-5 py-md-4 py-md-0 last-img-cont">
+                        </div>
+                    </div>
+                    <div className="col-4 ">
+                        <div className="row d-flex new-bottm-cont">
+                            {/* <div className="col-12 px-md-5 py-md-4 py-md-0">
+                                <Card 
+                                    key={props.loopData[2].id}
+                                    cardImgURL={props.loopData[2].cardImgURL}
+                                    btnLink={props.loopData[2].btnLink}
+                                    clickhandler = {()=> {
+                                        setimageChanger(props.loopData[2].cardImgURL)
+                                        setimageLink(props.loopData[2].btnLink)
+                                    }}
+                                    modalId="#printablesModalFive"
+                                />
+                            </div> */}
+                            {/* <div className="col-12 px-md-5 py-md-4 py-md-0 last-img-cont">
                                 <Card 
                                 key={props.loopData[3].id}
                                 cardImgURL={props.loopData[3].cardImgURL}
@@ -74,7 +86,7 @@ function SectionFiveCards(props) {
                                 }}
                                 modalId="#printablesModalFive"
                                 />
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

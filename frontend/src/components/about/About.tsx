@@ -15,7 +15,7 @@ const About = () => {
 
                     <p>Over the years, as the books and cards traveled the world collecting awards, I received countless letters of gratitude from children, parents, grandparents, carers, teachers, etc. This sparked and greatly influenced a longing to share these messages on a broader platform.</p>
 
-                    <p>Then, a few years ago, hands in the dirt, I had a vision to bring the World of We Are One alive on screen! Excited though inexperienced, began making dolls & puppets of characters from the books and following the creative thread of set/costume design, animation, screenwriting, filming, and app development.</p>
+                    <p>Then, a few years ago, hands in the dirt, I had a vision to bring the World of We Are One alive on screen! Excited though inexperienced, I began making dolls & puppets of characters from the books and following the creative thread of set/costume design, animation, screenwriting, filming, and app development.</p>
 
 
                     <p>It’s been inspiring...and, well, talk about steep learning curves! Whew!</p>

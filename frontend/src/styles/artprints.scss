@@ -38,10 +38,10 @@
             text-align: center;
         }
         p.para {
-            font-size: 24px;
-            color: #3f4f62;
-            font-style: italic;
-            font-family: "Lucida Calligraphy";
+            font-size: 26px;
+            color: #1f5b9b !important;
+            font-family: "Arial Rounded MT Bold" !important;
+            font-style:normal;
             text-align: center;
             display:block;
             margin:0 auto;
@@ -214,4 +214,11 @@
         }
     }
     
+}
+
+
+.art-prints-cont .textbox-cont h3.art-print-hd-top {
+    color: #1f5b9b;
+    font-family: "Arial Rounded MT Bold";
+    font-style:normal;
 }

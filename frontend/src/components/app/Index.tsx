@@ -12,7 +12,8 @@ export default function Index() {
            descp="Wow! What can I say? I am so excited about this App! It's based on the We Are One Exploration Cards. Each animated card has a
            valuable message which can be chosen singularly or in a group. There are also 240+ gorgeous puzzles with varying degrees of difficulty.
            And that's not all... 
-           new features will be added continually as we grow!" 
+           new features will be added continually as we grow!"
+           videoUrl="/assets/videos/app-add.mp4"
            />
         </>
     )

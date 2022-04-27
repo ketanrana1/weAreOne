@@ -30,8 +30,8 @@ export default function Index() {
                 head={["Art to delite, nourish ", <br/>,  "and inspire us all!"]}
             />
             <div className="textbox-cont container">
-                <h3 className="text-font-color-blue">"May every child’s environment reflect peace & harmony."</h3>
-                <p className="para text-font-color-blue">I love creating images that cultivate loving kindness.<br/> Welcome to the gallery.</p>
+                <h3 className="art-print-hd-top"><strong>"May every child’s environment reflect peace & harmony."</strong></h3>
+                <p className="para text-font-color-blue art-print-hd-top">I love creating images that cultivate loving kindness.<br/> Welcome to the gallery.</p>
             </div>
             <div className="images-text-cont container">
                 <div className="row justify-content-evenly">

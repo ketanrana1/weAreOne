@@ -128,7 +128,7 @@ function Index(props) {
             cardImgURL: "/assets/images/The bundle.jpg",
             btnLink: "/assets/images/The bundle.jpg",
             title: "Planet Project Bundle",
-            descp: "A great activity for the class or family to do!",
+            descp: "A great activity for a class or family to do!",
         },
         {
             id: 22,

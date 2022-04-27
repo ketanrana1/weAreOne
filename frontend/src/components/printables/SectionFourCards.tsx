@@ -15,19 +15,19 @@ function SectionFourCards(props) {
                     {
                         props.loppData.map(item => {
                             return (
-                                <div className={item.id === 11 ? "col-6 col-md-9 py-2 py-md-0" : "col-6 col-md-3 py-2 py-md-0"}>
+                                <div className={item.id === 11 ? "col-12 col-md-9 py-2 py-md-0" : "col-12 col-md-3 py-2 py-md-0"}>
                                     <Card 
                                     key={item.id}
                                     cardImgURL={item.cardImgURL}
                                     btnLink={item.btnLink}
                                     clickhandler = {()=> {
                                         setimageChanger(item.cardImgURL)
-                                        setimageLink(item.btnLink)
+                                        setimageLink('planet-Project-bundle.zip')
                                     }}
                                     modalId="#printablesModalFour"
                                     />
                                     <h2 className="project-bundle-text">{item.title}</h2>
-                                    <p className="project-bundle-text">{item.descp}</p>
+                                    <p className="project-bundle-text">{item.descp}</p> 
                                 </div>
                             );
                         })

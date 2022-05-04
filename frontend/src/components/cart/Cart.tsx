@@ -39,8 +39,10 @@ const Cart = () => {
     if ( router.pathname === "/cart") amount = 0
 
     const currencySymbol = sessionStorage.getItem("currencySymbol");
+    const currency = sessionStorage.getItem("Currency");
     const convertedPrice = +sessionStorage.getItem("convertedPrice");
-    const usdPrice = sessionStorage.getItem("usdPrice");
+    const audPrice = sessionStorage.getItem("audPrice");
+
     // const priceInConvertedCurrency: any = ( convertedPrice * product[0]?.book_price ).toFixed(2);
 
 return (
@@ -65,12 +67,15 @@ return (
                                 if (item.currencySymbol === currencySymbol) {
                                     priceInConvertedCurrency = item.product_price
                                     amount += item.product_price * item.quantity
+                                    console.log("ONE");
                                 } else if (convertedPrice === 1 && item.currencySymbol !== currencySymbol ) {
-                                    priceInConvertedCurrency = item.product_price - ( item.product_price - parseInt(usdPrice))
+                                    priceInConvertedCurrency = item.product_price - ( item.product_price - parseInt(audPrice))
                                     amount += priceInConvertedCurrency * item.quantity
+                                    console.log("TWO");
                                 } else {
                                      priceInConvertedCurrency = Math.round(convertedPrice * item.product_price);
                                     amount += priceInConvertedCurrency * item.quantity;
+                                    console.log("THREE");
                                 }
                                 
                                 return (
@@ -91,7 +96,7 @@ return (
                                     </a>
                                     </Link>                                   
                                 </td>
-                                <td className="price">{currencySymbol}{ priceInConvertedCurrency}</td>
+                                <td className="price">$ { priceInConvertedCurrency} {currency}</td>
                                 </tr>                          
                                 );
                             })}                           
@@ -105,7 +110,7 @@ return (
                     <tbody>
                         <tr>
                             <td className="right" style={{fontSize: "20px"}} ><b>Total:</b></td>
-                            <td className="right" style={{fontSize: "20px"}}>{currencySymbol}{amount}</td>
+                            <td className="right" style={{fontSize: "20px"}}>$ {amount} {currency}</td>
                         </tr>
                     </tbody>
                 </table>

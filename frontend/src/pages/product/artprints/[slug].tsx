@@ -75,8 +75,6 @@ const Product = ({ product, relatedProducts  }) => {
     delete sizes.large;
   }
 
-  console.log("SIZES", sizes)
-
   Object.entries(sizes).map(([key, value]) => console.log(key, value))
 
   const innerSizes = Object.entries(sizes).map(([key, value]) => value); 
@@ -96,12 +94,12 @@ const Product = ({ product, relatedProducts  }) => {
 
     // to change the price of other currency code
     let statrtingPriceWithoutConverstion = innerSizes[0].price
-    let startingPrice: any = innerSizes[0].price * +convertedPrice
+    let startingPrice: any = Math.round( innerSizes[0].price * +convertedPrice )
 
     const [sizePrice, setSizePrice] = useState(startingPrice);
-    const [priceUsd, setPriceUsd] = useState(statrtingPriceWithoutConverstion)
+    const [priceAud, setPriceUsd] = useState(statrtingPriceWithoutConverstion)
     // const [sizePriceTwo, setSizePriceTwo] = useState(statrtingPriceWithoutConverstion);
-    sessionStorage.setItem("usdPrice", statrtingPriceWithoutConverstion);
+    sessionStorage.setItem("audPrice", statrtingPriceWithoutConverstion);
 
     let usdPrice
     let priceInConvertedCurrency = startingPrice
@@ -121,14 +119,9 @@ const Product = ({ product, relatedProducts  }) => {
     }
 
     useEffect(() => {
-      if(priceUsd) sessionStorage.setItem("usdPrice", priceUsd);
-    }, [priceUsd])
+      if(priceAud) sessionStorage.setItem("audPrice", priceAud);
+    }, [priceAud])
     
-
-    
-    
-  
-     
 
     let styleCurrency
     if (currency === "AUD") {
@@ -153,8 +146,8 @@ const Product = ({ product, relatedProducts  }) => {
       quantity: counter,
       currencySymbol: currencySymbol,
       currency: currency,
-      usdPrice: priceUsd,
-      productVariant: priceUsd,
+      audPrice: priceAud,
+      productVariant: priceAud,
       productType: "artPrint"
     }
 
@@ -194,8 +187,8 @@ const Product = ({ product, relatedProducts  }) => {
                   <div className="product-info-cont">
                     <h2 className="prouct-name">{product[0]?.art_name}</h2>
                     <p className="product-by">Artist - Jennifer Black</p>
-                    <p className="price">{currencySymbol} {sizePrice} </p>
-                    <p style={styleCurrency}><i>Price in Australian dollars</i></p>
+                    <p className="price">$ {sizePrice} {currency} </p>
+                    {/* <p style={styleCurrency}><i>Price in Australian dollars</i></p> */}
                     <form>
                         <div className="size-selector">
                             <p>Size:</p>

@@ -37,14 +37,14 @@ const Header = (props) => {
     
                 if (typeof window !== "undefined") {
                     sessionStorage.setItem("convertedPrice", "1") 
-                    sessionStorage.setItem("Currency", "USD");  
-                    sessionStorage.setItem("currencySymbol", "$")
+                    sessionStorage.setItem("Currency", "AUD");  
+                    sessionStorage.setItem("currencySymbol", "A$")
                 }
     
             }
     
         }
-    }
+    } 
    
     loadOnInitialPageLoad();
 
@@ -143,7 +143,7 @@ const Header = (props) => {
                                 <a className='nav-link cart-image_number' onClick={handleNavCollapse}>
                                 <img src="/assets/images/cart.png" className="nav-item-image"/><div className="number-on-cart">{cart.length}</div>
                                 </a>
-                            </Link>
+                            </Link> 
                         </li> : <li className="nav-item" >
                             <Link href='/cart'>
                                 <a className='nav-link cart-image_number' onClick={handleNavCollapse}>
@@ -176,7 +176,7 @@ const Header = (props) => {
                                     <option value="USD">USD</option>
                                     <option selected value="AUD">AUD</option> 
                                 </select> 
-                            } */}
+                            } */} 
                         
 
 

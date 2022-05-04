@@ -28,12 +28,12 @@ const Product = ({ product, relatedProducts  }) => {
 
     const dispatch = useDispatch();
 
-    const router = useRouter()
+    const router = useRouter() 
 
     const [quantityState, setQuantityState] = useState(1)
     
 
-    sessionStorage.setItem("usdPrice", product[0]?.book_price);
+    sessionStorage.setItem("audPrice", product[0]?.book_price);
     const currency = sessionStorage.getItem("Currency")
     const currencySymbol = sessionStorage.getItem("currencySymbol");
     const convertedPrice = +sessionStorage.getItem("convertedPrice");
@@ -50,9 +50,9 @@ const Product = ({ product, relatedProducts  }) => {
       }
     }
 
-    let usdPrice
+    let audPrice
     if (typeof window !== "undefined") { 
-      usdPrice = sessionStorage.getItem("usdPrice")
+      audPrice = sessionStorage.getItem("audPrice")
     }
 
     const item = { 
@@ -63,7 +63,7 @@ const Product = ({ product, relatedProducts  }) => {
       quantity: counter,
       currencySymbol: currencySymbol,
       currency: currency,
-      usdPrice: usdPrice,
+      aud: audPrice,
       productType: "book"
     }
 
@@ -88,8 +88,8 @@ const Product = ({ product, relatedProducts  }) => {
                   <div className="product-info-cont">
                     <h2 className="prouct-name">{product[0]?.book_name}</h2>
                     <p className="product-by">Artist/Author - Jennifer Black</p>
-                    <div className="price">Price: {currencySymbol}{priceInConvertedCurrency}<br/>
-                      <p style={styleCurrency}><i>Price in Australian dollars</i></p>
+                    <div className="price">Price: {currencySymbol}{priceInConvertedCurrency} {currency}<br/>
+                      {/* <p style={styleCurrency}><i>Price in Australian dollars</i></p> */}
                     </div>
                     <div className="cart">
                             <div className="cart-inner-cont">Qty:

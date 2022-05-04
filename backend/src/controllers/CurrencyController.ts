@@ -46,9 +46,9 @@ export class CurrencyController {
 
     
     if (currencyCode === "USD") {
-      return 1;
+      return .71;
     } else if (currencyCode === "AUD")  {
-      return 1.4;
+      return 1;
     }
    
   }

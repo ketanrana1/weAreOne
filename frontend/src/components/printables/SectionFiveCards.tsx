@@ -61,7 +61,7 @@ function SectionFiveCards(props) {
                             </div>
                         </div>
                     </div>
-                    <div className="col-4 ">
+                    <div className="col-4">
                         <div className="row d-flex new-bottm-cont">
                             {/* <div className="col-12 px-md-5 py-md-4 py-md-0">
                                 <Card 

@@ -11,13 +11,13 @@ export default function TextWithVideo(props) {
                 </div>
                 <div className="video-cont row d-flex justify-content-center mb-5">
                     <div className="col-12 col-md-7">
-                        <video id="audioplayer" width="100%" height="100%"  controls autoPlay loop muted>
+                        <video id="audioplayer" width="100%" height="100%" controls autoPlay loop muted>
                             <source src={props.videoUrl} type="video/mp4" />
                             <source src={props.videoUrl} type="video/ogg" />
                         </video>
                     </div>
                 </div>               
             </div>         
-        </section>
+        </section> 
     )
 }

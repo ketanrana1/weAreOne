@@ -27,9 +27,11 @@ export class AudController {
         message: 'Request data is invalid',
         error: validate.error.details.map((d) => d.message),  
       };
-    }
+    } 
 
-    const id = "84d69dd4-4a0f-45bf-89e2-7ae0d1382005"
+    // const id = "84d69dd4-4a0f-45bf-89e2-7ae0d1382005"
+
+    const id = "998860a2-d2ea-47d4-a920-8372672e3878";
 
     const response = await Currency.findOneAndUpdate({ "puzzle_uuid": id }, { 
       aud_price: +body.aud_price,
@@ -53,7 +55,7 @@ export class AudController {
   @Get('/getAudPrice') 
   async getAud( @Body() body: any, ) {
 
-    const id = "84d69dd4-4a0f-45bf-89e2-7ae0d1382005"
+    const id = "998860a2-d2ea-47d4-a920-8372672e3878"
     const response = await Currency.aggregate([
         {
           '$project': { 

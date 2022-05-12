@@ -27,7 +27,7 @@ export default function Index() {
         <div className="art-prints-cont">
             <Banner 
                 imgUrl="/assets/images/artprints-banner-min.png" 
-                head={["Art to delite, nourish ", <br/>,  "and inspire us all!"]}
+                head={["Art to delight, nourish ", <br/>,  "and inspire us all!"]}
             />
             <div className="textbox-cont container">
                 <h3 className="art-print-hd-top"><strong>"May every child’s environment reflect peace & harmony."</strong></h3>

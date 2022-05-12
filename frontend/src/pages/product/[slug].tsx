@@ -88,7 +88,7 @@ const Product = ({ product, relatedProducts  }) => {
                   <div className="product-info-cont">
                     <h2 className="prouct-name">{product[0]?.book_name}</h2>
                     <p className="product-by">Artist/Author - Jennifer Black</p>
-                    <div className="price">Price: {currencySymbol}{priceInConvertedCurrency} {currency}<br/>
+                    <div className="price">Price: {priceInConvertedCurrency} {currency}<br/>
                       {/* <p style={styleCurrency}><i>Price in Australian dollars</i></p> */}
                     </div>
                     <div className="cart">

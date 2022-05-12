@@ -113,7 +113,7 @@ const Product = ({ product, relatedProducts  }) => {
       const newPrice = convertedPrice * +value
       console.log("VALUE", value)
       priceInConvertedCurrency = Math.round( convertedPrice * value );
-      setSizePrice(newPrice)
+      setSizePrice(priceInConvertedCurrency)
       setPriceUsd(value)
       // setSizePriceTwo(value)     
     }

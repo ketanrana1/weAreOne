@@ -38,7 +38,7 @@ export class AudController {
     });
 
     if(response){
-    return {message: "Price addded"};
+      return {message: "Price addded"};
     }
   
     // const newCurrency = new Currency(body);
@@ -54,7 +54,6 @@ export class AudController {
 
   @Get('/getAudPrice') 
   async getAud( @Body() body: any, ) {
-
     const id = "998860a2-d2ea-47d4-a920-8372672e3878"
     const response = await Currency.aggregate([
         {
@@ -67,9 +66,6 @@ export class AudController {
            response, 
            message: 'This action returns Currency Prices'
        };
-
   }
-
-
 }
 

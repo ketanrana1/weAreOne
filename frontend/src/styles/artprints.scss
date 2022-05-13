@@ -44,7 +44,7 @@
         }
         p.para {
             font-size: 26px;
-            color: #1f5b9b !important;
+            color: #0086c4 !important;
             font-family: Century Gothic !important;
             font-style:normal;
             text-align: center;
@@ -71,7 +71,7 @@
         }
         h3 {
             font-size: 23px;
-            color: #919191;
+            color: #646464;
             font-family: "Century Gothic";
             text-align: center;
             margin-top: 15px;
@@ -235,3 +235,7 @@
 .images-text-cont h3  {
     color: #0086c4;
 }   
+
+.textbox-cont p {
+    color: #0086c4 !important;
+}

@@ -12,6 +12,7 @@ const artprintSchema = new Schema({
   art_name: String,
   slug: String,
   art_description: String,
+  art_description_usa: String,
   art_image_1: String,
   art_image_2: String,
   art_image_3: String,

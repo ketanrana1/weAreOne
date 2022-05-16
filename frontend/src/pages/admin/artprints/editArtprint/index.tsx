@@ -31,6 +31,7 @@ const schema = {
     art_name: Joi.string().required(),
     slug: Joi.string().required(),
     art_description: Joi.string().required(),
+    art_description_usa: Joi.string().required(),
     size_small_price: Joi.any(),
     size_small_description: Joi.any(),
     size_large_price: Joi.any(),
@@ -45,7 +46,7 @@ export default function AddArtprint(props) {
 
     const { singleArtprint, ID } = props
 
-    const initialState = { art_name: singleArtprint[0].art_name, slug: singleArtprint[0].slug, art_description: singleArtprint[0].art_description, size_small_price: singleArtprint[0].size_small_price, size_small_description: singleArtprint[0].size_small_description, size_large_price: singleArtprint[0].size_large_price, size_large_description: singleArtprint[0].size_large_description, size_xlarge_price: singleArtprint[0].size_xlarge_price, size_xlarge_description: singleArtprint[0].size_xlarge_description, priority: singleArtprint[0].priority, art_image_1_name: singleArtprint[0].art_image_1_name, art_image_2_name: singleArtprint[0].art_image_2_name, art_image_3_name: singleArtprint[0].art_image_3_name, art_image_4_name: singleArtprint[0].art_image_4_name};
+    const initialState = { art_name: singleArtprint[0].art_name, slug: singleArtprint[0].slug, art_description: singleArtprint[0].art_description, art_description_usa: singleArtprint[0].art_description_usa, size_small_price: singleArtprint[0].size_small_price, size_small_description: singleArtprint[0].size_small_description, size_large_price: singleArtprint[0].size_large_price, size_large_description: singleArtprint[0].size_large_description, size_xlarge_price: singleArtprint[0].size_xlarge_price, size_xlarge_description: singleArtprint[0].size_xlarge_description, priority: singleArtprint[0].priority, art_image_1_name: singleArtprint[0].art_image_1_name, art_image_2_name: singleArtprint[0].art_image_2_name, art_image_3_name: singleArtprint[0].art_image_3_name, art_image_4_name: singleArtprint[0].art_image_4_name};
 
 
     const [state, setState] = useState(initialState);
@@ -75,6 +76,7 @@ export default function AddArtprint(props) {
         form.append('art_name', state.art_name);
         form.append('slug', state.slug);
         form.append('art_description', state.art_description);
+        form.append('art_description_usa', state.art_description_usa);
         form.append('size_small_price', state.size_small_price);
         form.append('size_small_description', state.size_small_description);
         form.append('size_large_price', state.size_large_price);
@@ -191,6 +193,12 @@ export default function AddArtprint(props) {
                         <label >Content</label><br/>
                         <textarea className="form-control" rows={10} id="story" name="art_description" style={{width: "100%"}} onChange={handleChange} value={state.art_description}> </textarea>
                         {errors && <small>{errors.art_description}</small>}
+                    </div>
+
+                    <div className="form-group">
+                        <label >Content USA</label><br/>
+                        <textarea className="form-control" rows={10} id="story" name="art_description_usa" style={{width: "100%"}} onChange={handleChange} value={state.art_description_usa}> </textarea>
+                        {errors && <small>{errors.art_description_usa}</small>}
                     </div>
 
                     <div className="form-group">

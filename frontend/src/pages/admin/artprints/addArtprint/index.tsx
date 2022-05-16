@@ -5,7 +5,7 @@ import axios from 'axios';
 import getConfig from 'next/config'
 const { publicRuntimeConfig } = getConfig() 
 
-const initialState = { art_name: "", slug: "", art_description: "", art_image_1: "", art_image_2: "", art_image_3: "", art_image_4: "", art_image_1_name: "", art_image_2_name: "", art_image_3_name: "", art_image_4_name: "", size_small_price: "", size_small_description: "", size_large_price: "", size_large_description: "", size_xlarge_price: "", size_xlarge_description: "", priority: ""};
+const initialState = { art_name: "", slug: "", art_description: "", art_description_usa: "", art_image_1: "", art_image_2: "", art_image_3: "", art_image_4: "", art_image_1_name: "", art_image_2_name: "", art_image_3_name: "", art_image_4_name: "", size_small_price: "", size_small_description: "", size_large_price: "", size_large_description: "", size_xlarge_price: "", size_xlarge_description: "", priority: ""};
 
 
 const initialResponseState: any = []; 
@@ -15,6 +15,7 @@ const schema = {
     art_name: Joi.string().required(),
     slug: Joi.string().required(),
     art_description: Joi.string().required(),
+    art_description_usa: Joi.string(),
     art_image_1: Joi.any(),
     art_image_2: Joi.any(),
     art_image_3: Joi.any(),
@@ -95,6 +96,7 @@ export default function AddArtprint() {
         form.append('art_name', state.art_name);
         form.append('slug', state.slug);
         form.append('art_description', state.art_description);
+        form.append('art_description_usa', state.art_description_usa);
         form.append('size_small_price', state.size_small_price);
         form.append('size_small_description', state.size_small_price);
         form.append('size_large_price', state.size_large_price);
@@ -227,6 +229,12 @@ export default function AddArtprint() {
                         <label >Content</label><br/>
                         <textarea className="form-control" rows={10} id="story" name="art_description" style={{width: "100%"}} onChange={handleChange} value={state.art_description}> </textarea>
                         {errors && <small>{errors.art_description}</small>}
+                    </div>
+
+                    <div className="form-group">
+                        <label >Content USA</label><br/>
+                        <textarea className="form-control" rows={10} id="story" name="art_description_usa" style={{width: "100%"}} onChange={handleChange} value={state.art_description_usa}> </textarea>
+                        {errors && <small>{errors.art_description_usa}</small>}
                     </div>
 
                     <div className="form-group">

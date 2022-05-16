@@ -62,6 +62,7 @@ const fileUploadOptions = ( ) => ({
     art_image_3_name: Joi.any(),
     art_image_4_name: Joi.any(),
     art_description: Joi.string().required().label('Description'),
+    art_description_usa: Joi.string().label('Description USA'),
     art_name: Joi.string().required().label('Slug'),
     slug: Joi.string().required().label('Slug'),
     size_small_price: Joi.any(),
@@ -111,6 +112,7 @@ const fileUploadOptions = ( ) => ({
    const artprintSchema = Joi.object({
 
     art_description: Joi.string().label('Description'),
+    art_description_usa: Joi.string().label('Description USA'),
     art_name: Joi.string().label('name'),
     slug: Joi.string().label('Slug'),
     size_small_price: Joi.any(),
@@ -135,6 +137,7 @@ const fileUploadOptions = ( ) => ({
 
    const response = await Artprint.findOneAndUpdate({ "artId": id }, { 
       art_description: body.art_description,
+      art_description_usa: body.art_description_usa,
       art_name: body.art_name,
       slug: body.slug,
       size_small_price: body.size_small_price,
@@ -244,6 +247,7 @@ const fileUploadOptions = ( ) => ({
           art_name: 1,
           slug: 1,
           art_description: 1,
+          art_description_usa: 1,
           artId: 1,
           art_image_1_name: {
             $concat: [process.env.IMAGES_BASE_PATH, "$art_image_1_name"]
@@ -288,6 +292,7 @@ const fileUploadOptions = ( ) => ({
            art_name: 1,
            slug: 1,
            art_description: 1,
+           art_description_usa: 1,
            artId: 1,
            art_image_1_name: {
              $concat: [process.env.IMAGES_BASE_PATH, "$art_image_1_name"]

@@ -161,6 +161,7 @@ const Product = ({ product, relatedProducts  }) => {
     function clickhandler(e) {
       setImgUrl(e.target.src)
     }
+    console.log("CURRENCY", currency);
 
 
 
@@ -202,7 +203,7 @@ const Product = ({ product, relatedProducts  }) => {
                           <div className="cart-inner-cont">Qty:
                               <div className="counter-cont-main">
                                   <div className="counter-cont">
-                                      {counter}
+                                      {counter} 
                                   </div>
                                   <div className="counter-btn-div">
                                       <div className="each-col top-incr" onClick={handleClickInc}>+</div>
@@ -214,7 +215,8 @@ const Product = ({ product, relatedProducts  }) => {
                       </div>
                     </form>
                     <div className="product-details-content-cont">
-                        {<div dangerouslySetInnerHTML={{__html: product[0]?.art_description}}></div>}
+                    { currency === "AUD" ? <div dangerouslySetInnerHTML={{__html: product[0]?.art_description}}></div> : <div dangerouslySetInnerHTML={{__html: product[0]?.art_description_usa}}></div> } 
+                        {/* {<div dangerouslySetInnerHTML={{__html: product[0]?.art_description}}></div>} */}
                     </div>
 
                     <div className="back-to-sale-cont">

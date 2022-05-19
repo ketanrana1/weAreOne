@@ -1,4 +1,5 @@
 import React from 'react'
+import LazyLoad from 'react-lazy-load';
 
 function Card(props) {
 
@@ -6,7 +7,9 @@ function Card(props) {
 
     return (
         <div className="cardCont">
-            <img className="cardImg" onClick={clickhandler} src={props.cardImgURL} data-toggle="modal" data-target={props.modalId} />
+            <LazyLoad>
+                <img className="cardImg" onClick={clickhandler} src={props.cardImgURL} data-toggle="modal" data-target={props.modalId} />
+            </LazyLoad>           
             {/* <div className="btmCont">
                 <button type="button" className="btmButton">
                     <a href ={props.btnLink} target="_blank">Download </a>

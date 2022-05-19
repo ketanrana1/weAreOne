@@ -8,6 +8,7 @@ import { addToCart, incrementQuantity, removeFromCart } from 'redux/cart.slice'
 import getConfig from 'next/config'
 const { publicRuntimeConfig } = getConfig()
 import Link from 'next/link' 
+import LazyLoad from 'react-lazy-load';
 
 
 
@@ -161,7 +162,7 @@ const Product = ({ product, relatedProducts  }) => {
     function clickhandler(e) {
       setImgUrl(e.target.src)
     }
-    console.log("CURRENCY", currency);
+    //console.log("CURRENCY", currency);
 
 
 
@@ -172,16 +173,24 @@ const Product = ({ product, relatedProducts  }) => {
             <div className="row gx-5">
                 <div className="col-12 col-md-7">
                   <div className="each-image pr-md-3">
+                  <LazyLoad>
                       <img className="each-product-image" src={product[0]?.art_image_1_name}  onClick={clickhandler} data-toggle="modal" data-target="#artPrintsModalSingle" />
+                  </LazyLoad>
                   </div>
                   <div className="each-image pr-md-3">
+                  <LazyLoad>
                       <img className="each-product-image" src={product[0]?.art_image_2_name}  onClick={clickhandler} data-toggle="modal" data-target="#artPrintsModalSingle" />
+                  </LazyLoad>
                   </div>
                   <div className="each-image pr-md-3">
+                  <LazyLoad>
                       <img className="each-product-image" src={product[0]?.art_image_3_name}  onClick={clickhandler} data-toggle="modal" data-target="#artPrintsModalSingle" />
+                  </LazyLoad>
                   </div>
                   <div className="each-image pr-md-3">
+                  <LazyLoad>
                       <img className="each-product-image" src={product[0]?.art_image_4_name}  onClick={clickhandler} data-toggle="modal" data-target="#artPrintsModalSingle" />
+                  </LazyLoad>
                   </div>
                 </div>
                 <div className="col-12 col-md-5">
@@ -249,7 +258,9 @@ const Product = ({ product, relatedProducts  }) => {
                       <div className="col-6 col-md-3 each-product">
                         <Link href={`/product/artprints/${data.slug}`}>
                           <a>
+                          <LazyLoad>
                             <img src={data.art_image_1_name} alt="product-image" />
+                          </LazyLoad>
                             <div className="text-cont">
                               <h3>{data.art_name}</h3>
                               <p></p>

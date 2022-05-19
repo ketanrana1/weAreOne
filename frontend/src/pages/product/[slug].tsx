@@ -92,18 +92,18 @@ const Product = ({ product, relatedProducts  }) => {
                       {/* <p style={styleCurrency}><i>Price in Australian dollars</i></p> */}
                     </div>
                     <div className="cart">
-                            <div className="cart-inner-cont">Qty:
-                                <div className="counter-cont-main">
-                                    <div className="counter-cont">
-                                        {counter}
-                                    </div>
-                                    <div className="counter-btn-div">
-                                        <div className="each-col top-incr" onClick={handleClickInc}>+</div>
-                                        <div className="each-col btm-dec" onClick={handleClickDec}>-</div>
-                                    </div>
-                                </div>
-                                <input onClick={handleAtc} type="button" value="Add to Cart" id="button-cart" className="button" />
-                            </div>
+                      <div className="cart-inner-cont">Qty:
+                          <div className="counter-cont-main">
+                              <div className="counter-cont">
+                                  {counter}
+                              </div>
+                              <div className="counter-btn-div">
+                                  <div className="each-col top-incr" onClick={handleClickInc}>+</div>
+                                  <div className="each-col btm-dec" onClick={handleClickDec}>-</div>
+                              </div>
+                          </div>
+                          <input onClick={handleAtc} type="button" value="Add to Cart" id="button-cart" className="button" />
+                      </div>
                       </div> 
                       <div id="tab-description" className="tab-content py-5">
                         <div dangerouslySetInnerHTML={{__html: product[0]?.book_description}}></div>

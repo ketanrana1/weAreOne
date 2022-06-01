@@ -47,7 +47,8 @@ export class CheckoutController {
         product_name: Joi.string().min(0).allow(null).allow('').label('Variant'),
         product_price: Joi.number().min(0).allow(null).allow('').label('Order Repeat'),
         product_image_name: Joi.string().min(0).allow(null).allow('').label('Order Repeat Value'),
-        usdPrice: Joi.any()
+        usdPrice: Joi.any(),
+        audPrice: Joi.any()
       
       })),
       currencyCode: Joi.any(),
@@ -84,7 +85,7 @@ export class CheckoutController {
     for (let i =0 ; i < newOrder.ordered_items.length ; i ++) {
 
       
-      totalAmount = (totalAmount + (( newOrder.ordered_items[i].product_price * +convertedPrice ) * newOrder.ordered_items[i].quantity));
+      totalAmount = (totalAmount + (( newOrder.ordered_items[i].audPrice * +convertedPrice ) * newOrder.ordered_items[i].quantity));
       totalAmount = totalAmount
       // console.log("UPPER TOTAL AMOUNT", totalAmount)
       if(newOrder.ordered_items[i].id == "ad2f14df-5c92-4c66-8fd2-1fad1ca6c28f") {
@@ -101,7 +102,6 @@ export class CheckoutController {
     // console.log("total amount", newOrder.total_amount)
     newOrder.sub_amount = (totalAmount).toFixed(2);
     transaction.status = "Redirecting to Gateway";
-    console.group("New Order", newOrder)
     await transaction.save();
     newOrder.transactionId =  transaction.transactionId;
     const result = await newOrder.save();
@@ -110,6 +110,7 @@ export class CheckoutController {
     const returnUrl = `${url}/payment/paypal/success?orderId=${result.orderId}&transactionId=${transaction.transactionId}`;
     const cancelUrl = `${url}/payment/paypal/cancel?orderId=${result.orderId}&transactionId=${transaction.transactionId}`;
     const currencyCode: any = currencyCodee;
+
     const payment = await PayPal.createPayment( newOrder, returnUrl, cancelUrl, currencyCode);
     if (payment.statusCode === 201) {
       payment.result.links.forEach((link: any) => {

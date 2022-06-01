@@ -17,7 +17,7 @@ const sendEmail = async (message: {
   return sendgrid.send({
     to: message.to,
     cc: message.cc,
-    from: 'naveen.kumar@geeky.dev',
+    from: 'jennifer@worldofweareone.com',
     subject: message.subject,
     html: message.html,
   }).then(() => {

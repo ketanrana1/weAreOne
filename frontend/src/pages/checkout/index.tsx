@@ -118,7 +118,8 @@ export default function Checkout(props) {
                 quantity: item.quantity,
                 product_name: item.product_name,
                 product_image_name: item.product_image_name,
-                usdPrice: item.usdPrice
+                usdPrice: item.usdPrice,
+                audPrice: item.audPrice,
     
             })),
             userID : userid, 

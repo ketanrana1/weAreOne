@@ -48,11 +48,11 @@ const Product = ({ product, relatedProducts  }) => {
       styleCurrency = { 
         display: "none"
       }
-    }
+    } 
 
-    let audPrice
+    let priceAud
     if (typeof window !== "undefined") { 
-      audPrice = sessionStorage.getItem("audPrice")
+      priceAud = sessionStorage.getItem("audPrice")
     }
 
     const item = { 
@@ -63,7 +63,7 @@ const Product = ({ product, relatedProducts  }) => {
       quantity: counter,
       currencySymbol: currencySymbol,
       currency: currency,
-      aud: audPrice,
+      audPrice: +priceAud,
       productType: "book"
     }
 

@@ -84,7 +84,7 @@ export class CheckoutController {
     for (let i =0 ; i < newOrder.ordered_items.length ; i ++) {
 
       
-      totalAmount = (totalAmount + (( newOrder.ordered_items[i].usdPrice * +convertedPrice ) * newOrder.ordered_items[i].quantity));
+      totalAmount = (totalAmount + (( newOrder.ordered_items[i].product_price * +convertedPrice ) * newOrder.ordered_items[i].quantity));
       totalAmount = totalAmount
       // console.log("UPPER TOTAL AMOUNT", totalAmount)
       if(newOrder.ordered_items[i].id == "ad2f14df-5c92-4c66-8fd2-1fad1ca6c28f") {
@@ -101,6 +101,7 @@ export class CheckoutController {
     // console.log("total amount", newOrder.total_amount)
     newOrder.sub_amount = (totalAmount).toFixed(2);
     transaction.status = "Redirecting to Gateway";
+    console.group("New Order", newOrder)
     await transaction.save();
     newOrder.transactionId =  transaction.transactionId;
     const result = await newOrder.save();

@@ -52,24 +52,28 @@ $p-color: #1a3692;
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
     }
-    h2 {
-        font-size: 39px;
-        letter-spacing: 4px;
-        line-height: 42px;
-        color: #1f429b;
-        font-weight: bold;
-        font-family: "Arial Rounded MT Bold";
-        max-width:290px;
+
+    .head-cont {
         position: absolute;
-        bottom: 75px;
-        right: 150px;
-        filter: drop-shadow(0 0 20px white);
-        text-shadow: 2px 2px 4px white;
-        filter: drop-shadow(0.087px 4.999px 3px rgba(255, 255, 255, 0.58));
-        animation: fadeInAnimation ease 6s;
-        animation-iteration-count: 1;
-        animation-fill-mode: forwards;
+            bottom: 75px;
+            right: 150px;
+        h2 {
+            font-size: 39px;
+            letter-spacing: 4px;
+            line-height: 42px;
+            color: #1f429b;
+            font-weight: bold;
+            font-family: "Arial Rounded MT Bold";
+            max-width:290px;        
+            filter: drop-shadow(0 0 20px white);
+            text-shadow: 2px 2px 4px white;
+            filter: drop-shadow(0.087px 4.999px 3px rgba(255, 255, 255, 0.58));
+            animation: fadeInAnimation ease 6s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
     }
+    
 }
 /*Section New Banner*/
 
@@ -194,7 +198,7 @@ $p-color: #1a3692;
                 visibility: visible;
                 transition: all .3s ease-in;
             }
-            img.book-img     {
+            img.book-img {
                 opacity: .3;
                 transition: all .3s ease-in;
             }
@@ -362,7 +366,7 @@ section.sectionTwoMain, section.sectionCardVideo {
         height: auto;
         overflow:hidden;
     }
-    .contRight{
+    .contRight {
         position: relative;
     }
     .contRight .topImg{
@@ -392,7 +396,7 @@ section.sectionCardVideo {
 
 
 /*Section Color*/
-.sectionColor{
+.sectionColor {
     position:relative;
     width:100%;
     padding:0;
@@ -701,11 +705,8 @@ section.sectionCardVideo {
         }
     }
     .section-new-banner {
-        h2 {
-            max-width: 100%;
-            margin: 0 auto;
-            display: block;
-            padding: 20px 20px 20px 20px;
+
+        .head-cont {
             display: flex;
             top: 0;
             bottom: 0;
@@ -714,10 +715,16 @@ section.sectionCardVideo {
             justify-content: center;
             align-items: end;
             text-align: center;
-            font-size: 20px;
-            line-height: 24px;
-            letter-spacing: 1px;
+            h2 {
+                max-width: 100%;
+                margin: 0 auto;           
+                padding: 20px 20px 20px 20px;
+                font-size: 20px;
+                line-height: 24px;
+                letter-spacing: 1px;
+            }
         }
+        
     }
     .rain-bow-sec {
         p {
@@ -742,9 +749,32 @@ section.sectionCardVideo {
         padding: 0 15px;
         border: none;
     }
+    .sec-video-new iframe {
+        max-height:320px;
+    }
+    .txt-on-img-cont .text-cont {
+        position: relative;
+    }
 }
 
 
+
+// @media only screen and (max-width:767px) {
+
+//     .section-new-banner {
+//         h2 {
+//             max-width: 100%;
+//             margin: 0 auto;
+//             display: block;
+//             padding: 20px 20px 20px 20px;
+//             display: block;
+//             bottom:10px;
+//             font-size: 20px;
+//             line-height: 24px;
+//             letter-spacing: 1px;
+//         }
+//     }
+// }
 
 
 @media only screen and (min-width: 992px) {
@@ -759,4 +789,6 @@ section.sectionCardVideo {
             }
         }
     }
+
+
 }

@@ -7,19 +7,26 @@ export default function Slider(props) {
                 <div className="carousel-item active">
                     <div className="banner-container">
                         <img src="/assets/images/JEN Web Banner Light-min.webp" className="d-block w-100" alt="banner" />
-                        <h2>Beautiful books for children <span>aged 1-100!</span></h2>
+                        <div className="head-cont">
+                            <h2>Beautiful books for children <span> aged 1-100!</span></h2>
+                        </div>
+                        
                     </div>
                 </div>
                 <div className="carousel-item">
                     <div className="banner-container">
                         <img src="/assets/images/JEN Heart Banner Light-min.webp" className="d-block w-100" alt="banner" />
-                        <h2>Content reflecting the Light of our Hearts!</h2>
+                        <div className="head-cont">
+                            <h2>Content reflecting the Light of our Hearts!</h2>
+                        </div>
                     </div>
                 </div>
                 <div className="carousel-item" data-interval="2000">
                     <div className="banner-container">
                         <img src="/assets/images/JEN Rainbow Banner Light-min.png" className="d-block w-100" alt="banner" />
-                        <h2>Timeless messages to inspire us all!</h2>
+                        <div className="head-cont">
+                            <h2>Timeless messages to inspire us all!</h2>
+                        </div>
                     </div>
                 </div>
             </div>

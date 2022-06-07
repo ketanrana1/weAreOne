@@ -11,11 +11,11 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous" />
-          <link href="http://fonts.cdnfonts.com/css/arial-rounded-mt-bold" rel="stylesheet" />
-          <link href="http://fonts.cdnfonts.com/css/century-gothic" rel="stylesheet" />
-          <link href="http://fonts.cdnfonts.com/css/lucida-calligraphy-new" rel="stylesheet" />
+          <link href="https://fonts.cdnfonts.com/css/arial-rounded-mt-bold" rel="stylesheet" />
+          <link href="https://fonts.cdnfonts.com/css/century-gothic" rel="stylesheet" />
+          <link href="https://fonts.cdnfonts.com/css/lucida-calligraphy-new" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
-          <link href="http://fonts.cdnfonts.com/css/arial-rounded-mt-bold" rel="stylesheet" />
+          <link href="https://fonts.cdnfonts.com/css/arial-rounded-mt-bold" rel="stylesheet" />
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossOrigin="anonymous" referrerpolicy="no-referrer" />
           <link rel="stylesheet" href="/assets/css/styles.css"  />                
           <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet" />

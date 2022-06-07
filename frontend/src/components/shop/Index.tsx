@@ -20,7 +20,7 @@ const Index = () => {
             subheading:"(Hardcover)",
             imgURL: "/assets/images/we-are-love-book-800x1020.png", 
             btnImgUrl: "/assets/images/buy-now-btn.png",
-            btnLinkUrl: "http://www.worldofweareone.com/Books?product_id=51"
+            btnLinkUrl: "https://www.worldofweareone.com/Books?product_id=51"
         },
         {
             id: 77773,
@@ -36,7 +36,7 @@ const Index = () => {
             subheading:"(Hardcover)",
             imgURL: "/assets/images/2+-books-FREE-min.jpg", 
             btnImgUrl: "/assets/images/buy-now-btn.png",
-            btnLinkUrl: "http://www.worldofweareone.com/2-books-with-free-shipping"
+            btnLinkUrl: "https://www.worldofweareone.com/2-books-with-free-shipping"
         }
     ]
 

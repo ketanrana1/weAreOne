@@ -9,6 +9,7 @@ module.exports = {
         placesApiKey: process.env.PLACES_API_KEY,
         stripePublicKey: process.env.STRIPE_PUBLIC_KEY,
         backendBaseUrl: process.env.BACKEND_BASE_URL,
-        frontendBaseUrl: process.env.FRONTEND_BASE_URL
+        frontendBaseUrl: process.env.FRONTEND_BASE_URL,
+        forgotPasswordSecretKey: process.env.FORGOT_PASSWORD_SECRET_KEY
     }
 }

@@ -20,7 +20,7 @@ export default function HelpAndSupport() {
 
 
     return (
-        <div className="container p-md-5">
+        <div className="container pt-4 p-md-5">
         <h1>Help and Support</h1>
         <div className="">
         {

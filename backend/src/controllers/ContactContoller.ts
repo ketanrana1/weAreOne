@@ -1,7 +1,10 @@
 import Contact from '../models/contact';
 import { Controller, Body, Get, Post, UploadedFile} from 'routing-controllers';
 import Joi from 'joi';
-import { getTemplate, sendEmail } from 'services/mailer';
+import { getTemplate, client } from 'services/mailer';
+
+var nodemailer = require('nodemailer');
+var sgTransport = require('nodemailer-sendgrid-transport');
 
 
 @Controller('/api')
@@ -29,34 +32,52 @@ export class ContactController {
         error: validate.error.details.map((d) => d.message),  
       };
     }
-  
+   
     const newContact = new Contact(body);
     const result = await newContact.save();
     
     if(result) {
 
       const contactContent = await getTemplate('emails/admin-contact-us.ejs', {body});
-      sendEmail({
-        to: "testmail8196@gmail.com",
-        cc: 'ketan.rana@geeky.dev',
+      var contactContentEmail = {
+        to: `${process.env.ADMIN_EMAIL}`,
         subject: `Enquiry from ${body.email}`,
         html: contactContent,
-      });
+        from: `${process.env.ADMIN_EMAIL}`
+      };
 
       const content = await getTemplate('emails/contact-us.ejs', {body});
-      sendEmail({
+      var contentEmail = {
         to: `${body.email}`,
-        cc: 'testmail8196@gmail.com',
         subject: `Thank you for showing interest in We-are-one`,
         html: content,
+        from: `${process.env.ADMIN_EMAIL}`
+      };
+      
+      
+      client.sendMail(contactContentEmail, function(err: any, info: any){
+          if (err ){
+            console.log(err);
+          }
+          else {
+            console.log('Message sent: ' + info.response);
+          }
       });
+
+      client.sendMail(contentEmail, function(err: any, info: any){
+        if (err ){
+          console.log(err);
+        }
+        else {
+          console.log('Message sent: ' + info.response);
+        }
+    });
 
       return {
         success: true,
         message: "Your message has been sent successfully!"
       };
     }
-
   }
 
 

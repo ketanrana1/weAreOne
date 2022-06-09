@@ -5,7 +5,7 @@ import { OpenAPI } from 'routing-controllers-openapi';
 import paypal from 'services/paypal';
 import Order from 'models/order';
 import Transaction from 'models/transaction';
-import { getTemplate, sendEmail } from 'services/mailer';
+import { getTemplate, sendEmail, client } from 'services/mailer';
 
 import users from 'models/users';
 
@@ -34,22 +34,41 @@ export default class PaymentController {
             transaction.info = payment
             await order.save();
             await transaction.save();
+
             const emailContent = await getTemplate('emails/order-received.ejs', { order, transaction});
-            
-            sendEmail({
+            var  emailContentEmail = {
               to: `${process.env.ADMIN_EMAIL}`,
-              cc: 'ketan.rana@geeky.dev',
               subject: `Order ${order.orderId} Receipt from worldofweareone.com`,
               html: emailContent,
-            });
-
+              from: `${process.env.ADMIN_EMAIL}`
+            };
+            
             const orderContent = await getTemplate('emails/order-details.ejs', { order, transaction});
-            sendEmail({
+            var  orderContentEmail = {
               to: `${order.shipping_email}`,
-              cc: 'ketan.rana@geeky.dev',
               subject: `Order ${order.orderId} Receipt from worldofweareone.com`,
               html: orderContent,
-            });
+              from: `${process.env.ADMIN_EMAIL}`
+            };
+
+            client.sendMail(emailContentEmail, function(err: any, info: any){
+              if (err ){
+                console.log(err);
+              }
+              else {
+                console.log('Message sent: ' + info.response);
+              }
+          });
+    
+          client.sendMail(orderContentEmail, function(err: any, info: any){
+            if (err ){
+              console.log(err);
+            }
+            else {
+              console.log('Message sent: ' + info.response);
+            }
+        });
+
             response.redirect(`${process.env.FRONTEND_BASE_URL}success`);
             return response;
           }       

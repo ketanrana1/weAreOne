@@ -22,20 +22,19 @@ export default function Shipping() {
 
 
     return (
-        <div className="container p-md-5">
-        <h1>Shipping</h1>
-        <div className="">
-        {
-                    response?.map( (data:any, index) => {                       
-                            return (
-                                <div className="">
-                                    <div dangerouslySetInnerHTML={{__html: data.content}}></div>
-                                </div>
-                            );
-                        })
-                    }
-        </div>
-
+        <div className="container pt-4 p-md-5">
+            <h1>Shipping</h1>
+            <div className="">
+            {
+                response?.map( (data:any, index) => {                       
+                    return (
+                        <div className="">
+                            <div dangerouslySetInnerHTML={{__html: data.content}}></div>
+                        </div>
+                    );
+                })
+            }
+            </div>
         </div>
         
     )

@@ -19,7 +19,7 @@ export default function TermsAndConditions() {
     },[]);
 
     return (
-        <div className="container p-md-5">
+        <div className="container pt-4 p-md-5">
             <h1>Terms and Conditions</h1>
             <div className="">
                 {

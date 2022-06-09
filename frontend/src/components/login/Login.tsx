@@ -142,7 +142,7 @@ const Login = () => {
                                                     </div>
                                                     <div className="col-md-12">
                                                         <div className="common-input-field-wrapper forgot-password-wrapper">
-                                                            <a href="">Forgotten Password</a>
+                                                            <a href="/forgot-password/">Forgotten Password</a>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-12">

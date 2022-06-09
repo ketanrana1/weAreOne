@@ -21,7 +21,7 @@ export default function PrivacyPolicy() {
 
 
     return (
-        <div className="container p-md-5">
+        <div className="container pt-4 p-md-5">
         <h1>Privacy Policy</h1><div className="">
         {
                     response?.map( (data:any, index) => {                       

@@ -32,7 +32,20 @@ const sendEmail = async (message: {
 
 const getTemplate = async (templateLocation: string, data: any = {}) => ejs.renderFile(path.join(__dirname, '..', 'views', templateLocation), { ...data, dayjs, reactAppUrl: process.env.REACT_APP_URL });
 
+
+var nodemailer = require('nodemailer');
+var sgTransport = require('nodemailer-sendgrid-transport');
+
+var options = {
+  auth: {
+    api_key: process.env.NODEMAILER_SENDGRID_API_KEY
+  }
+}
+
+var client = nodemailer.createTransport(sgTransport(options));
+
 export {
   sendEmail,
   getTemplate,
+  client,
 };

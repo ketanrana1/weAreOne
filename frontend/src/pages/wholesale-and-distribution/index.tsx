@@ -23,7 +23,7 @@ export default function WholesaleAndDistribution() {
 
 
     return (
-        <div className="container p-md-5">
+        <div className="container pt-4 p-md-5">
         <h1>Wholesale and Distribution</h1>
         <div className="">
         {

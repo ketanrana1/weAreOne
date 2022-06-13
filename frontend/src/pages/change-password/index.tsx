@@ -135,7 +135,7 @@ export default function Changepassword(props) {
                   <div className="mt-3" style={{display: falseEmailState ? "block" : "none" }}><p style={{color: "red"}}>The email you entered is not registered. Please enter the corrrect email and proceed. </p></div>
                 </div>
               </div>
-              </div>
+            </div>
         </div>
     )
 }

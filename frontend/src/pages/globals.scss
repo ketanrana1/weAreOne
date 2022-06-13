@@ -1001,6 +1001,8 @@ display: inline-block;
 
 
 @media only screen and (max-width:768px) {
+
+    
     .sec-childs-bookshelf {
         h2 {
             font-size: 26px;
@@ -1048,7 +1050,10 @@ display: inline-block;
             margin-top:15px;
         }
     }
-    
+    .mainFooter input[type="image"] {
+        margin-left:0;
+        margin-top:5px;
+    }
 }
 
 @media only screen and (max-width:600px){

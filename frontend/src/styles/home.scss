@@ -627,6 +627,12 @@ section.sectionCardVideo {
 }
 
 @media only screen and (max-width:767px) {
+
+    .section-art-prints.txt-on-img-cont .text-cont h2 {
+        margin-bottom: 15px;
+        margin-top: 4%;
+        text-transform: uppercase;
+      }
     .sectionColor .btnImg img {
         width: 110px;
     }
@@ -663,7 +669,7 @@ section.sectionCardVideo {
     .sectionFollow {
         .sectionBtmCont {
             h4 {
-                margin-top:20px;
+                margin-top:2px;
                 font-size:32px;
             }
             .folllow-icons {
@@ -705,7 +711,6 @@ section.sectionCardVideo {
         }
     }
     .section-new-banner {
-
         .head-cont {
             display: flex;
             top: 0;
@@ -718,7 +723,7 @@ section.sectionCardVideo {
             h2 {
                 max-width: 100%;
                 margin: 0 auto;           
-                padding: 20px 20px 20px 20px;
+                padding: 20px 20px 2px 20px;
                 font-size: 20px;
                 line-height: 24px;
                 letter-spacing: 1px;

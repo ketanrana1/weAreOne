@@ -168,6 +168,11 @@ export class RegisterController {
     newBody.role = "user"
     newBody.is_paid = "false"
 
+    const SALT_WORK_FACTOR = 10;
+    const salt = await bcrypt.genSalt(SALT_WORK_FACTOR);
+    const hashedPassword = await bcrypt.hash(newBody.password, salt);
+    newBody.password = hashedPassword
+
     const newUser = new User(newBody);
     const response = await newUser.save();
 
@@ -254,6 +259,8 @@ export class RegisterController {
         body.password,
         user.password
       );
+
+      console.log("passwordIsValid", passwordIsValid)
 
       if (!passwordIsValid) {
       return {
